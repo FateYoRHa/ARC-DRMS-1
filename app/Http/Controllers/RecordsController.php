@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Models\Records;
+use App\Http\Requests\StoreRecordsRequest;
+use App\Http\Requests\UpdateRecordsRequest;
 
-class UserController extends Controller
+class RecordsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('records.index');
     }
 
     /**
@@ -31,10 +31,10 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUserRequest  $request
+     * @param  \App\Http\Requests\StoreRecordsRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserRequest $request)
+    public function store(StoreRecordsRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Records  $records
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Records $records)
     {
         //
     }
@@ -53,10 +53,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Records  $records
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Records $records)
     {
         //
     }
@@ -64,11 +64,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateUserRequest  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Http\Requests\UpdateRecordsRequest  $request
+     * @param  \App\Models\Records  $records
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateRecordsRequest $request, Records $records)
     {
         //
     }
@@ -76,10 +76,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Records  $records
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Records $records)
     {
         //
     }

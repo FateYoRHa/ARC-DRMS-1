@@ -26,8 +26,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/user.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-</head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" </head>
 
 <body>
     <div id="app">
@@ -84,9 +83,38 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="d-flex" id="wrapper">
+            <aside>
+            <!-- Sidebar -->
+            <div class="bg-light border-right" id="sidebar-wrapper">
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action bg-light" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }} <span class="material-icons-round material-icons-sidebar">logout</span>
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+
+                </div>
+                <div class="sidebar-heading"><img src="{{ asset('images/ubseal.png') }}" alt="ubseal"> </div>
+                <div class="list-group list-group-flush">
+                    <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-light">Records <span class="material-icons-round material-icons-sidebar">article</span></a>
+                    <a href="{{ route('newrecords.index') }}" class="list-group-item list-group-item-action bg-light">New Record <span class="material-icons-round material-icons-sidebar">post_add</span></a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+                </div>
+            </div>
+            <!-- /#sidebar-wrapper -->
+            </aside>
+
+            <main class="py-2">
+                @yield('content')
+            </main>
+        </div>
+        <!-- /#wrapper -->
     </div>
 </body>
 
