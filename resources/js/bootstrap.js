@@ -1,5 +1,6 @@
 window._ = require('lodash');
-window.$ = require('jquery');
+window.$ = window.jQuery = require('jquery');
+window._ = require('material-icons');
 
 try {
     require('bootstrap');
