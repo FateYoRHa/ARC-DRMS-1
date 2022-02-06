@@ -9,7 +9,7 @@ body {
 
 /* custom sidebar */
 #sidebar-wrapper img { 
-    width: 12vw;
+    width: 5vw;
     display: block;
     margin: auto;
 }
@@ -38,30 +38,6 @@ body {
 .list-group-item {
     padding: 0.25rem 1rem !important;
 }
-
-/* @media (min-width: 1280px) {
-    #sidebar-wrapper {
-        margin-left: 0;
-    }
-    #page-content-wrapper {
-        min-width: 0;
-        width: 400%;
-    }
-}; */
-
-@media (min-width: 768px) {
-    #sidebar-wrapper {
-        margin-left: 0;
-    }
-    #page-content-wrapper {
-        min-width: 0;
-        width: 100%;
-    }
-    #wrapper.toggled #sidebar-wrapper {
-        margin-left: -12rem;
-    }
-};
-
 
 /* custom material-icon */
 .material-icons-toggle{
