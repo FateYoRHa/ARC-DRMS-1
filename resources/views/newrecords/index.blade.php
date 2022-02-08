@@ -6,41 +6,39 @@
 <div id="page-content-wrapper">
 
     <div class="container-fluid">
-        <button class="btn btn-outline" id="menu-toggle"><span class="material-icons-round material-icons-toggle">more_vert</span></button>
+        <div class="sidebar-button">
+            <button class="btn btn-outline" id="menu-toggle"><span class="material-icons-round material-icons-toggle">more_vert</span></button>
+        </div>
+        <div class="page-content-title">
+            <h2>New Record</h2>
+        </div>
+        <hr />
         <form class="row g-3">
             <div class="col-md-12">
-                <label for="inputEmail4" class="form-label col-form-label-sm">ID Number</label>
-                <input type="email" class="form-control form-control-sm" id="inputEmail4">
+                <label for="inputIdNumer" class="form-label col-form-label-sm">ID Number <span class="material-icons-round material-icons-newrecord">badge</span></label>
+                <input type="text" class="form-control form-control-sm" id="inputIdNumber">
             </div>
             <div class="col-md-4">
-                <label for="inputCity" class="form-label col-form-label-sm">First Name</label>
-                <input type="text" class="form-control form-control-sm" id="inputCity">
+                <label for="inputFname" class="form-label col-form-label-sm">First Name</label>
+                <input type="text" class="form-control form-control-sm" id="inputFname">
             </div>
             <div class="col-md-4">
-                <label for="inputState" class="form-label col-form-label-sm">Middle Name</label>
-                <input type="text" class="form-control form-control-sm" id="inputZip">
+                <label for="inputMname" class="form-label col-form-label-sm">Middle Name</label>
+                <input type="text" class="form-control form-control-sm" id="inputMname">
             </div>
             <div class="col-md-4">
-                <label for="inputZip" class="form-label col-form-label-sm">Last Name</label>
-                <input type="text" class="form-control form-control-sm" id="inputZip">
+                <label for="inputLname" class="form-label col-form-label-sm">Last Name</label>
+                <input type="text" class="form-control form-control-sm" id="inputLname">
             </div>
-            <div class="col-md">
-                    <label for="exampleFormControlFile1">Import File</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                </div>
+            <div class="col-md-5">
+                <label for="upload-file-new">Import File <span class="material-icons-outlined material-icons-newrecord">upload</span></label>
+                <input type="file" class="form-control-file" id="upload-file-new">
+            </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-dark">Create New Record</button>
+                <button type="submit" class="btn btn-success new-record-submit">Submit</button>
             </div>
         </form>
-        <hr/>
-        <div class="row">
-            <form>
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Import File</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                </div>
-            </form>
-        </div>
+
 
     </div>
 </div>

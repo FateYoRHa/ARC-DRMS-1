@@ -24,3 +24,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/records', App\Http\Controllers\RecordsController::class);
 Route::resource('/newrecords', App\Http\Controllers\NewRecordsController::class);
+Route::resource('/import', App\Http\Controllers\ImportController::class);
