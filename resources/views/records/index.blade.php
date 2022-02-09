@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+
 @section('content')
 
 <!-- Page Content -->
@@ -14,15 +15,24 @@
             <h2>Records</h2>
         </div>
         <hr />
+        <table class="table table-striped display yajra-datatable nowrap" id="datatable-record">
+            <thead>
+                <tr>
+                    <th>Record ID</th>
+                    <th>Id Number</th>
+                    <th>Name</th>
+                    <th>File</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <!-- include script here for datatable entries -->
+        @include('records.index_script') 
+  
 
-        <div class="record-search">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control form-control-sm" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary btn-sm" type="button" id="button-addon2">Search</button>
-            </div>
-        </div>
-
-        <div class="table-responsive-sm">
+        <!-- <div class="table-responsive-sm">
             <table class="table table-striped table-hover table-sm">
                 <thead>
                     <tr>
@@ -77,7 +87,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> -->
     </div>
 </div>
 <!-- /#page-content-wrapper -->

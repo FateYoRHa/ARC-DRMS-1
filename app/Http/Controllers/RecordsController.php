@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Records;
 use App\Http\Requests\StoreRecordsRequest;
 use App\Http\Requests\UpdateRecordsRequest;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class RecordsController extends Controller
 {
@@ -13,8 +15,21 @@ class RecordsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $data = Records::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm"><span class="material-icons-outlined material-icons">info</span></a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm" hidden>Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        
+
         return view('records.index');
     }
 

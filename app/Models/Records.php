@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Records extends Model
 {
     use HasFactory;
+
+    protected $table = "records";
+
+    protected $fillable = [
+        "id_number",
+        "name",
+        "file_path"
+    ];
 }
