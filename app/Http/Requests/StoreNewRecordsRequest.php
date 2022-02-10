@@ -34,9 +34,10 @@ class StoreNewRecordsRequest extends FormRequest
     {
         return [
             'id_number' => 'required|unique:records',
-            'fName' => 'required',
-            'mName' => 'required',
-            'lName' => 'required',
+            'inputFname' => 'required',
+            'inputMname' => 'required',
+            'inputLname' => 'required',
+            
         ];
     }
     public function messages()
@@ -48,9 +49,9 @@ class StoreNewRecordsRequest extends FormRequest
             // ],
             'id_number.required' => 'ID Number is Required',
             'id_number.unique' => 'ID Number must be unique',
-            'fName.required' => 'First Name is required',
-            'mName.required' => 'Middle Name is required',
-            'lName.required' => 'Last Name is required',
+            'inputFname.required' => 'First Name is required',
+            'inputMname.required' => 'Middle Name is required',
+            'inputLname.required' => 'Last Name is required',
         ];
     }
 }

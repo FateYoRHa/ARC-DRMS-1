@@ -87,3 +87,9 @@ body {
     width: 2px;
     color:rgb(201, 182, 182);
 }
+
+/* alert */
+
+#error-alert { 
+    padding:0.25rem 0.875rem;
+}

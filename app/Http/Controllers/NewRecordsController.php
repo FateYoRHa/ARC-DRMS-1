@@ -6,7 +6,8 @@ use App\Models\NewRecords;
 use App\Http\Requests\StoreNewRecordsRequest;
 use App\Http\Requests\UpdateNewRecordsRequest;
 use App\Models\Records;
-use PhpOffice\PhpSpreadsheet\Calculation\TextData\Concatenate;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class NewRecordsController extends Controller
 {
@@ -47,13 +48,11 @@ class NewRecordsController extends Controller
         $lName = $request->input('inputLname');
         $recordQuery->name = $fName . ' ' .  $mName . ' ' .  $lName;
 
-        $recordQuery->file_path = $request->file('file_path');
+        $recordQuery->file_path = $request->file('upload-file-new');
         $recordQuery->save();
-
-
-
-
-        return redirect('/newrecords')->with('message', 'Reservation is a successful');
+        
+        return redirect('/newrecords')->with('success', 'Created successfully!');
+       
     }
 
     /**

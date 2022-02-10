@@ -25,8 +25,9 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/media-query.css') }}" rel="stylesheet">
 
+    
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -94,7 +95,7 @@
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf   
+                            @csrf
                         </form>
 
                     </div>
@@ -111,6 +112,7 @@
             </aside>
 
             <main class="py-2">
+                @include('sweetalert::alert')
                 @yield('content')
             </main>
         </div>
