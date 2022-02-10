@@ -15,7 +15,7 @@
             <h2>Records</h2>
         </div>
         <hr />
-        <table class="table table-striped display yajra-datatable nowrap" id="datatable-record">
+        <table class="table table-striped display datatable nowrap" id="datatable-record">
             <thead>
                 <tr>
                     <th>Record ID</th>
@@ -30,64 +30,6 @@
         </table>
         <!-- include script here for datatable entries -->
         @include('records.index_script') 
-  
-
-        <!-- <div class="table-responsive-sm">
-            <table class="table table-striped table-hover table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">Id Number</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">File</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>2000XXXX</td>
-                        <td>Jane Does Doe</td>
-                        <td>
-                            <span class="material-icons-round">
-                                folder
-                            </span>
-                        </td>
-                        <td>
-                            <span class="material-icons-round">
-                                edit
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2000XXXX</td>
-                        <td>Thorton John</td>
-                        <td>
-                            <span class="material-icons-round">
-                                folder
-                            </span>
-                        </td>
-                        <td>
-                            <span class="material-icons-round">
-                                edit
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2000XXXX</td>
-                        <td>Mary Jane Does Doe</td>
-                        <td>
-                            <span class="material-icons-round">
-                                folder
-                            </span>
-                        </td>
-                        <td>
-                            <span class="material-icons-round">
-                                edit
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> -->
     </div>
 </div>
 <!-- /#page-content-wrapper -->

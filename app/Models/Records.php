@@ -16,4 +16,8 @@ class Records extends Model
         "name",
         "file_path"
     ];
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

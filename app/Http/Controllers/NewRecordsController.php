@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\NewRecords;
 use App\Http\Requests\StoreNewRecordsRequest;
 use App\Http\Requests\UpdateNewRecordsRequest;
+use App\Models\Records;
+use PhpOffice\PhpSpreadsheet\Calculation\TextData\Concatenate;
 
 class NewRecordsController extends Controller
 {
@@ -15,7 +17,7 @@ class NewRecordsController extends Controller
      */
     public function index()
     {
-        return view ('newrecords.index');
+        return view('newrecords.index');
     }
 
     /**
@@ -36,7 +38,22 @@ class NewRecordsController extends Controller
      */
     public function store(StoreNewRecordsRequest $request)
     {
-        //
+        $recordQuery = new NewRecords();
+        $recordQuery->id_number = $request->input('id_number');
+
+        /*Concatenate name */
+        $fName = $request->input('inputFname');
+        $mName = $request->input('inputMname');
+        $lName = $request->input('inputLname');
+        $recordQuery->name = $fName . ' ' .  $mName . ' ' .  $lName;
+
+        $recordQuery->file_path = $request->file('file_path');
+        $recordQuery->save();
+
+
+
+
+        return redirect('/newrecords')->with('message', 'Reservation is a successful');
     }
 
     /**

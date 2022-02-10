@@ -1,7 +1,7 @@
 <script type="text/javascript">
-    $(function() {
+    $(document).ready( function() {
 
-        var table = $('.yajra-datatable').DataTable({
+        var table = $('.datatable').DataTable({
             processing: true,
             serverSide: true,
             responsive: true,
@@ -30,7 +30,7 @@
                     searchable: true
                 },
             ],
-            scrollY: '50vh',
+            scrollY: '55vh',
             scrollX: true,
             scrollCollapse: true,
             columnDefs: [{

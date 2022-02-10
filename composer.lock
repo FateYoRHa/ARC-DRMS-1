@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b32435a3a0044ffec9c7b0dfdb694ff",
+    "content-hash": "5a33cfb0194f28d6762104b1224d9d9f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1376,22 +1376,22 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v3.4.2",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "e01198123f7f4369d13c1f83a897c3f5e97fc9f4"
+                "reference": "64a0f43492c00780b2261c56cd7007a4f370d95b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/e01198123f7f4369d13c1f83a897c3f5e97fc9f4",
-                "reference": "e01198123f7f4369d13c1f83a897c3f5e97fc9f4",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/64a0f43492c00780b2261c56cd7007a4f370d95b",
+                "reference": "64a0f43492c00780b2261c56cd7007a4f370d95b",
                 "shasum": ""
             },
             "require": {
                 "illuminate/console": "^8.42|^9.0",
                 "illuminate/filesystem": "^8.42|^9.0",
-                "illuminate/support": "^8.42|^9.0",
+                "illuminate/support": "^8.82|^9.0",
                 "illuminate/validation": "^8.42|^9.0",
                 "php": "^7.3|^8.0"
             },
@@ -1431,9 +1431,9 @@
                 "ui"
             ],
             "support": {
-                "source": "https://github.com/laravel/ui/tree/v3.4.2"
+                "source": "https://github.com/laravel/ui/tree/v3.4.3"
             },
-            "time": "2022-01-25T20:15:56+00:00"
+            "time": "2022-02-08T14:19:32+00:00"
         },
         {
             "name": "laravelcollective/html",
@@ -6665,12 +6665,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Facade\\Ignition\\": "src"
-                },
                 "files": [
                     "src/helpers.php"
-                ]
+                ],
+                "psr-4": {
+                    "Facade\\Ignition\\": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -6936,16 +6936,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.13.1",
+            "version": "v1.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "b9749028732eca8080c26d01cd88a2f3549c2e3e"
+                "reference": "ede5e861549be2c3a8b789cdb34203a5aef5b92a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/b9749028732eca8080c26d01cd88a2f3549c2e3e",
-                "reference": "b9749028732eca8080c26d01cd88a2f3549c2e3e",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/ede5e861549be2c3a8b789cdb34203a5aef5b92a",
+                "reference": "ede5e861549be2c3a8b789cdb34203a5aef5b92a",
                 "shasum": ""
             },
             "require": {
@@ -6992,7 +6992,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-01-20T15:31:25+00:00"
+            "time": "2022-02-08T14:14:12+00:00"
         },
         {
             "name": "mockery/mockery",
