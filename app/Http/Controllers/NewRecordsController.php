@@ -6,6 +6,7 @@ use App\Models\NewRecords;
 use App\Http\Requests\StoreNewRecordsRequest;
 use App\Http\Requests\UpdateNewRecordsRequest;
 use App\Models\Records;
+use Facade\FlareClient\Stacktrace\File;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -48,11 +49,26 @@ class NewRecordsController extends Controller
         $lName = $request->input('inputLname');
         $recordQuery->name = $fName . ' ' .  $mName . ' ' .  $lName;
 
-        $recordQuery->file_path = $request->file('upload-file-new');
+        /** Not Yet Working Need  */
+        if ($request->hasFile('file')) {
+            foreach ($request->file('file') as $file) {
+                $filenames = $file->getClientOriginalName();
+                $file->move(public_path('Files'), $filenames);
+                $data[] = $filenames;
+            }
+        }
+
+
+        $recordQuery->file_path = $filenames;
+
+
+        // $fileName = time() . '.'. $request->file->extension();  
+        // $request->file->move(public_path('file'), $fileName);
+
+
         $recordQuery->save();
-        
+
         return redirect('/newrecords')->with('success', 'Created successfully!');
-       
     }
 
     /**

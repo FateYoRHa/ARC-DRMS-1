@@ -44,7 +44,7 @@
             </div>
             <div class="col-md-5">
                 <label for="upload-file-new">Import File<span class="material-icons-outlined material-icons-newrecord">upload</span></label>
-                <input type="file" class="form-control-file" id="upload-file-new" name="upload-file-new">
+                <input type="file" class="form-control-file" id="file" name="file[]" multiple>
             </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-success new-record-submit" id="submit-new-record">Submit</button>
