@@ -34,7 +34,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('#') }}" d>
+                <a class="navbar-brand" href="{{ url('#') }}" >
                     {{ config('app.name', 'ARC DBMS') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -97,7 +97,6 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
-
                     </div>
                     <div class="sidebar-heading"><img src="{{ asset('images/ubseal.png') }}" alt="ubseal"> </div>
                     <div class="list-group list-group-flush">

@@ -5,23 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Records extends Model
+class Uploads extends Model
 {
     use HasFactory;
 
-    protected $table = "records";
+    protected $table = "uploads";
 
     protected $fillable = [
-        "id_number",
-        "name",
-        "file_path"
+        'name',
+        'filepath',
+        'id_record',
     ];
 
     public function user() {
         return $this->belongsTo('App\User');
     }
 
-    public function records() {
-        return $this->hasMany('App\Uploads');
+    public function uploads() {
+        return $this->belongsTo('App\Records');
     }
 }
