@@ -8,16 +8,16 @@
             autofill:true,
             ajax: "{{ route('records.index') }}",
             columns: [{
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex'
+                    data: 'record_id',
+                    name: 'record Id'
                 },
                 {
                     data: 'id_number',
                     name: 'id_number'
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'student_name',
+                    name: 'student_name'
                 },
                 {
                     data: 'file_path',
@@ -35,7 +35,7 @@
             scrollCollapse: true,
             columnDefs: [{
                     targets: 0,
-                    visible: false,
+                    visible: true,
                     searchable: false
                 }
             ],

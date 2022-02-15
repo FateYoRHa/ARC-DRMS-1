@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@include('newrecords.index_script')
+
 @section('content')
 
 <!-- Page Content -->
@@ -10,7 +10,7 @@
             <button class="btn btn-outline" id="menu-toggle"><span class="material-icons-round material-icons-toggle">more_vert</span></button>
         </div>
         <div class="page-content-title">
-            <h2>New Record</h2>
+            <h2>Edit Record</h2>
         </div>
         <hr />
         @if ($errors->any())
@@ -24,30 +24,29 @@
 
         </div>
         @endif
-        <form action="{{ route('newrecords.store') }}" method="POST" class="row g-3" id="new-record-form" enctype="multipart/form-data">
+        <form action="{{ url('records/'.$recordQuery->record_id) }}" method="PUT" class="row g-3" id="new-record-form" enctype="multipart/form-data">
             {{ csrf_field() }}
+            <input type="text" class="form-control form-control-sm" id="record_id" name="record_id" value="{{$recordQuery->record_id}}" required hidden>
             <div class="col-md-12">
                 <label for="inputIdNumer" class="form-label col-form-label-sm">ID Number <span class="material-icons-round material-icons-newrecord">badge</span></label>
-                <input type="text" class="form-control form-control-sm" id="id_number" name="id_number" value="{{ old('id_number') }}" required>
+                <input type="text" class="form-control form-control-sm" id="id_number" name="id_number" value="{{$recordQuery->id_number}}" required>
             </div>
+            <div class="col-md-12">
+                <label for="inputFname" class="form-label col-form-label-sm">Name</label>
+                <input type="text" class="form-control form-control-sm" id="student_name" name="student_name" value="{{$recordQuery->student_name}}" required>
+            </div>
+
             <div class="col-md-4">
-                <label for="inputFname" class="form-label col-form-label-sm">First Name</label>
-                <input type="text" class="form-control form-control-sm" id="inputFname" name="inputFname" value="{{ old('inputFname') }}" required>
-            </div>
-            <div class="col-md-4">
-                <label for="inputMname" class="form-label col-form-label-sm">Middle Name</label>
-                <input type="text" class="form-control form-control-sm" id="inputMname" name="inputMname" value="{{ old('inputMname') }}" required>
-            </div>
-            <div class="col-md-4">
-                <label for="inputLname" class="form-label col-form-label-sm">Last Name</label>
-                <input type="text" class="form-control form-control-sm" id="inputLname" name="inputLname" value="{{ old('inputLname') }}" required>
-            </div>
-            <div class="col-md-5">
                 <label for="upload-file-new">Import File<span class="material-icons-outlined material-icons-newrecord">upload</span></label>
                 <input type="file" class="form-control-file" id="files" name="files[]" multiple>
             </div>
+            @foreach ($uploadQuery as $file)
+            <p>{{$file->filename}}</p>
+            <img src="{{ url('uploads/' .$file->filename) }}" alt="">
+            @endforeach
+
             <div class="col-12">
-                <button type="submit" class="btn btn-success new-record-submit" id="submit-new-record">Submit</button>
+                <button type="submit" class="btn btn-success new-record-submit" id="submit-new-record">Save</button>
             </div>
         </form>
 

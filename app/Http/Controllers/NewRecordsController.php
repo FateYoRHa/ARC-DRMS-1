@@ -6,6 +6,7 @@ use App\Models\NewRecords;
 use App\Http\Requests\StoreNewRecordsRequest;
 use App\Http\Requests\UpdateNewRecordsRequest;
 use App\Models\Records;
+use App\Models\Uploads;
 use Facade\FlareClient\Stacktrace\File;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -47,24 +48,34 @@ class NewRecordsController extends Controller
         $fName = $request->input('inputFname');
         $mName = $request->input('inputMname');
         $lName = $request->input('inputLname');
-        $recordQuery->name = $fName . ' ' .  $mName . ' ' .  $lName;
+        $recordQuery->student_name = $fName . ' ' .  $mName . ' ' .  $lName;
 
-        /** Not Yet Working Need  */
-        if ($request->hasFile('file')) {
-            foreach ($request->file('file') as $file) {
-                $filenames = $file->getClientOriginalName();
-                $file->move(public_path('Files'), $filenames);
-                $data[] = $filenames;
+        if ($request->hasfile('files')) {
+            foreach ($request->file('files') as $key => $file) {
+                $path = $file->store('public/files');
+                $name = $file->getClientOriginalName();
+                $student_id_record = $request->input('id_number');
+                $insert[$key]['student_id_record'] = $student_id_record;
+                $insert[$key]['filename'] = $name;
+                $insert[$key]['filepath'] = $path;
+            }
+        }
+        
+
+        if ($request->hasfile('files')) {
+            foreach ($request->file('files') as $file) {
+                $name = $file->getClientOriginalName();
+                $file->move(public_path().'/uploads/', $name);  
+                $data[] = $name; 
+               
             }
         }
 
-
-        $recordQuery->file_path = $filenames;
-
+        
 
         // $fileName = time() . '.'. $request->file->extension();  
         // $request->file->move(public_path('file'), $fileName);
-
+        Uploads::insert($insert);
 
         $recordQuery->save();
 

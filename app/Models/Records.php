@@ -11,17 +11,24 @@ class Records extends Model
 
     protected $table = "records";
 
+    //Timestamps
+    public $timestamps = true;
+
+    public $primaryKey = "record_id";
+
     protected $fillable = [
         "id_number",
-        "name",
+        "student_name",
         "file_path"
     ];
 
-    public function user() {
-        return $this->belongsTo('App\User');
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
     }
 
-    public function records() {
-        return $this->hasMany('App\Uploads');
+    public function records()
+    {
+        return $this->hasMany('App\Models\Uploads');
     }
 }

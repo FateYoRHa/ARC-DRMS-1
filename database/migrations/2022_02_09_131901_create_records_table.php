@@ -16,7 +16,7 @@ class CreateRecordsTable extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->id('record_id');
             $table->integer('id_number')->unique();
-            $table->string('name');
+            $table->string('student_name');
             $table->string('file_path')->nullable();
             $table->timestamps();
         });

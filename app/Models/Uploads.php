@@ -9,19 +9,24 @@ class Uploads extends Model
 {
     use HasFactory;
 
+    //Timestamps
+    public $timestamps = true;
+    
     protected $table = "uploads";
 
     protected $fillable = [
-        'name',
+        'filename',
         'filepath',
         'id_record',
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 
-    public function uploads() {
+    public function uploads()
+    {
         return $this->belongsTo('App\Records');
     }
 }
