@@ -17,7 +17,7 @@ class Uploads extends Model
     protected $fillable = [
         'filename',
         'filepath',
-        'id_record',
+        'student_id_record',
     ];
 
     public function user()

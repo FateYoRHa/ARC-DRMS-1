@@ -77,9 +77,8 @@ class RecordsController extends Controller
 
         $uploadQuery = DB::table('records')
             ->join('uploads', 'id_number', '=', 'uploads.student_id_record')
-            ->get('filename');
+            ->get();
 
-        
         return view('records.edit', compact('recordQuery', 'uploadQuery'));
     }
 

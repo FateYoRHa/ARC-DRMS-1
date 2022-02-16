@@ -20,6 +20,7 @@
 @media (min-width: 768px) {
     #sidebar-wrapper {
         margin-left: 0;
+        height: 100%;
     }
     #page-content-wrapper {
         min-width: 0;

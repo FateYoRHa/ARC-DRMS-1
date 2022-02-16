@@ -40,15 +40,25 @@
                 <label for="upload-file-new">Import File<span class="material-icons-outlined material-icons-newrecord">upload</span></label>
                 <input type="file" class="form-control-file" id="files" name="files[]" multiple>
             </div>
-            @foreach ($uploadQuery as $file)
-            <p>{{$file->filename}}</p>
-            <img src="{{ url('uploads/' .$file->filename) }}" alt="">
-            @endforeach
+
 
             <div class="col-12">
                 <button type="submit" class="btn btn-success new-record-submit" id="submit-new-record">Save</button>
             </div>
         </form>
+        <!-- Create other page for viewing the files -->
+        <div class="col-md-12">
+            <div class="row">
+                @foreach ($uploadQuery as $file)
+                @if($recordQuery->id_number == $file->student_id_record)
+                <div class="col-md-6">
+                    <iframe src="/ViewerJS/#../uploads/{{$file->filename}}" width='500' height='400' allowfullscreen webkitallowfullscreen ></iframe>
+                </div>
+                @endif
+                @endforeach
+            </div>
+        </div>
+
 
     </div>
 </div>

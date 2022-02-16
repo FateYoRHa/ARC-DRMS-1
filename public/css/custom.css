@@ -1,5 +1,6 @@
 body {
     overflow-x: hidden;
+    min-height:100%
 }
 
 /* custom nav */
@@ -23,7 +24,7 @@ body {
     margin: auto;
 }
 #sidebar-wrapper {
-    min-height: 100vh;
+    min-height:100vh;
     margin-left: -12rem;
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
