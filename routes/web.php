@@ -23,9 +23,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/records', App\Http\Controllers\RecordsController::class);
-Route::resource('/newrecords', App\Http\Controllers\NewRecordsController::class);
-Route::resource('/import', App\Http\Controllers\ImportController::class);
+Route::resource('records', App\Http\Controllers\RecordsController::class);
+Route::resource('newrecords', App\Http\Controllers\NewRecordsController::class);
+Route::resource('import', App\Http\Controllers\ImportController::class);
 
 //DocumentViewer Library
 Route::any('ViewerJS/{all?}', function(){

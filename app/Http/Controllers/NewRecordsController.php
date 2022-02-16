@@ -101,7 +101,7 @@ class NewRecordsController extends Controller
      */
     public function edit(NewRecords $newRecords)
     {
-        //
+        
     }
 
     /**
@@ -111,9 +111,25 @@ class NewRecordsController extends Controller
      * @param  \App\Models\NewRecords  $newRecords
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateNewRecordsRequest $request, NewRecords $newRecords)
+    public function update(UpdateNewRecordsRequest $request, NewRecords $newRecords, $record_id)
     {
-        //
+        $recordQuery = Records::find($record_id);
+        $recordQuery->id_number = $request->input('id_number');
+        $recordQuery->student_name = $request->input('student_name');
+
+        if ($request->hasfile('files')) {
+            foreach ($request->file('files') as $key => $file) {
+                $path = $file->store('public/files');
+                $name = $file->getClientOriginalName();
+                $student_id_record = $request->input('id_number');
+                $insert[$key]['student_id_record'] = $student_id_record;
+                $insert[$key]['filename'] = $name;
+                $insert[$key]['filepath'] = $path;
+            }
+        }
+        $recordQuery->save();
+
+        return redirect('/import')->with('success', 'Updated successfully!');
     }
 
     /**

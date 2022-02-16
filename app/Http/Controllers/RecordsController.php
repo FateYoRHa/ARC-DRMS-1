@@ -23,7 +23,10 @@ class RecordsController extends Controller
             $data = Records::latest()->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="/records/' . $row->record_id . '/edit" class="edit btn btn-info btn-sm"><span class="material-icons-outlined material-icons">info</span></a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm" hidden>Delete</a>';
+                    $actionBtn = '
+                    <a class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#showModal" id="btnShow" data-id="'. $row->record_id .'"><span class="material-icons-outlined material-icons">preview</span></a>
+                    <a href="/records/' . $row->record_id . '/edit" class="edit btn btn-info btn-sm"><span class="material-icons-outlined material-icons">info</span></a> 
+                    <a href="javascript:void(0)" class="delete btn btn-outline-danger btn-sm"><span class="material-icons-outlined material-icons">delete</span></a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -60,9 +63,15 @@ class RecordsController extends Controller
      * @param  \App\Models\Records  $records
      * @return \Illuminate\Http\Response
      */
-    public function show(Records $records)
+    public function show(Records $records, $record_id)
     {
-        //
+        $recordQuery = Records::find($record_id);
+
+        $uploadQuery = DB::table('records')
+            ->join('uploads', 'id_number', '=', 'uploads.student_id_record')
+            ->get();
+
+        return view('records.edit', compact('uploadQuery'))->with('recordQuery', $recordQuery);
     }
 
     /**
@@ -79,7 +88,7 @@ class RecordsController extends Controller
             ->join('uploads', 'id_number', '=', 'uploads.student_id_record')
             ->get();
 
-        return view('records.edit', compact('recordQuery', 'uploadQuery'));
+        return view('records.edit', compact('uploadQuery'))->with('recordQuery', $recordQuery);
     }
 
     /**
