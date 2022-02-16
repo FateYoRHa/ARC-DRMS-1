@@ -25,6 +25,7 @@ class RecordsController extends Controller
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                     <a class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#showModal" id="btnShow" data-id="'. $row->record_id .'"><span class="material-icons-outlined material-icons">preview</span></a>
+                    <a href="/records/' . $row->record_id . '" class="edit btn btn-info btn-sm"><span class="material-icons-outlined material-icons">info</span></a> 
                     <a href="/records/' . $row->record_id . '/edit" class="edit btn btn-info btn-sm"><span class="material-icons-outlined material-icons">info</span></a> 
                     <a href="javascript:void(0)" class="delete btn btn-outline-danger btn-sm"><span class="material-icons-outlined material-icons">delete</span></a>';
                     return $actionBtn;
@@ -71,7 +72,7 @@ class RecordsController extends Controller
             ->join('uploads', 'id_number', '=', 'uploads.student_id_record')
             ->get();
 
-        return view('records.edit', compact('uploadQuery'))->with('recordQuery', $recordQuery);
+        return view('records.show', compact('uploadQuery'))->with('recordQuery', $recordQuery);
     }
 
     /**
