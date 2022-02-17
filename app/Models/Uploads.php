@@ -13,6 +13,8 @@ class Uploads extends Model
     public $timestamps = true;
     
     protected $table = "uploads";
+    public $primaryKey = "upload_id";
+    
 
     protected $fillable = [
         'filename',

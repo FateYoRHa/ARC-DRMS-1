@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Records;
 use App\Http\Requests\StoreRecordsRequest;
 use App\Http\Requests\UpdateRecordsRequest;
+use App\Models\Uploads;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -18,14 +19,15 @@ class RecordsController extends Controller
      */
     public function index(Request $request)
     {
-
         if ($request->ajax()) {
             $data = Records::latest()->get();
             return DataTables::of($data)
+                ->addColumn('name', function($row){
+                    return $row->fName . ' '. $row->mName . ' ' . $row->lName;
+                })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
-                    <a class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#showModal" id="btnShow" data-id="'. $row->record_id .'"><span class="material-icons-outlined material-icons">preview</span></a>
-                    <a href="/records/' . $row->record_id . '" class="edit btn btn-info btn-sm"><span class="material-icons-outlined material-icons">info</span></a> 
+                    <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm"><span class="material-icons-outlined material-icons">preview</span></a> 
                     <a href="/records/' . $row->record_id . '/edit" class="edit btn btn-info btn-sm"><span class="material-icons-outlined material-icons">info</span></a> 
                     <a href="javascript:void(0)" class="delete btn btn-outline-danger btn-sm"><span class="material-icons-outlined material-icons">delete</span></a>';
                     return $actionBtn;
@@ -103,18 +105,23 @@ class RecordsController extends Controller
     {
         $recordQuery = Records::find($record_id);
         $recordQuery->id_number = $request->input('id_number');
-        $recordQuery->student_name = $request->input('student_name');
+        $recordQuery->fName = $request->input('inputFname');
+        $recordQuery->mName = $request->input('inputMname');
+        $recordQuery->lName = $request->input('inputLname');
 
         if ($request->hasfile('files')) {
             foreach ($request->file('files') as $key => $file) {
                 $path = $file->store('public/files');
                 $name = $file->getClientOriginalName();
-                $student_id_record = $request->input('id_number');
-                $insert[$key]['student_id_record'] = $student_id_record;
+                $id_record = $request->input('id_number');
                 $insert[$key]['filename'] = $name;
                 $insert[$key]['filepath'] = $path;
+                $insert[$key]['student_id_record'] = $id_record;
             }
+
+            DB::table('uploads')->upsert(['filename' => $name, 'filepath' => $path, 'student_id_record' => $id_record], [], ['filepath']);
         }
+ 
         $recordQuery->save();
 
         return redirect('/records')->with('success', 'Updated successfully!');

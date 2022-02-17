@@ -90,7 +90,25 @@ body {
 }
 
 /* alert */
-
 #error-alert { 
     padding:0.25rem 0.875rem;
+}
+
+/* custom show page */
+.profile-img img{
+    width: 80%;
+    display: inline-block;
+    border-radius: 8px;
+    
+    padding: 10px;
+    box-shadow: 3px 2px #888888;
+}
+.primary-details {
+    margin-bottom: 1rem;
+}
+.profile-details{
+    background-color: rgb(255, 255, 236);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 3px 2px #888888;
 }

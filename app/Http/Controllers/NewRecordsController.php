@@ -43,13 +43,11 @@ class NewRecordsController extends Controller
     {
         $recordQuery = new NewRecords();
         $recordQuery->id_number = $request->input('id_number');
+        $recordQuery->fName = $request->input('inputFname');
+        $recordQuery->mName = $request->input('inputMname');
+        $recordQuery->lName = $request->input('inputLname');
 
-        /*Concatenate name */
-        $fName = $request->input('inputFname');
-        $mName = $request->input('inputMname');
-        $lName = $request->input('inputLname');
-        $recordQuery->student_name = $fName . ' ' .  $mName . ' ' .  $lName;
-
+        /** Check if has file then get filename as key and insert in db */
         if ($request->hasfile('files')) {
             foreach ($request->file('files') as $key => $file) {
                 $path = $file->store('public/files');
@@ -59,15 +57,14 @@ class NewRecordsController extends Controller
                 $insert[$key]['filename'] = $name;
                 $insert[$key]['filepath'] = $path;
             }
+            Uploads::insert($insert);
         }
-        
-
+        /** Check if has file then upload in dir of system */
         if ($request->hasfile('files')) {
             foreach ($request->file('files') as $file) {
                 $name = $file->getClientOriginalName();
                 $file->move(public_path().'/uploads/', $name);  
                 $data[] = $name; 
-               
             }
         }
 
@@ -75,7 +72,7 @@ class NewRecordsController extends Controller
 
         // $fileName = time() . '.'. $request->file->extension();  
         // $request->file->move(public_path('file'), $fileName);
-        Uploads::insert($insert);
+       
 
         $recordQuery->save();
 

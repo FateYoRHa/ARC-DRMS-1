@@ -13,18 +13,24 @@
             <h2>Record</h2>
         </div>
         <hr />
-        <div class="col-md-12">
-            <label for="inputIdNumer" class="form-label col-form-label-sm">ID Number <span class="material-icons-round material-icons-newrecord">badge</span></label>
-            <h4>
-                {{$recordQuery->id_number}}
-            </h4>
+        <div class="primary-details row">
+            <div class="col-md-2 profile-img">
+                <img src="{{ asset('images/blank-profile.png') }}" alt="" class="profile-img">
+            </div>
+            <div class="col-md-10 row profile-details">
+                <div class="col">
+                    <label for="idNumber" class="col-form-label-lg">ID Number</label>
+                    <p>{{$recordQuery->id_number}}</p>
+                    <label for="name" class="col-form-label-lg">Name</label>
+                    <p>{{$recordQuery->fName}} {{$recordQuery->mName}} {{$recordQuery->lName}}</p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-12">
-            <label for="inputFname" class="form-label col-form-label-sm">Name</label>
-            <h4>
-                {{$recordQuery->student_name}}
-            </h4>
+
+        <div class="page-content-title">
+            <h2>Record Files</h2>
         </div>
+        <hr />
         <!-- Create other page for viewing the files -->
         <div class="col-md-12">
             <div class="row">

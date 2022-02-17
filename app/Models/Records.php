@@ -18,7 +18,9 @@ class Records extends Model
 
     protected $fillable = [
         "id_number",
-        "student_name",
+        "fName",
+        "mName",
+        "lName",
         "file_path"
     ];
 
