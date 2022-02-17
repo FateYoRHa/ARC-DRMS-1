@@ -13,6 +13,7 @@ class Uploads extends Model
     public $timestamps = true;
     
     protected $table = "uploads";
+    
     public $primaryKey = "upload_id";
     
 
@@ -27,7 +28,7 @@ class Uploads extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function uploads()
+    public function records()
     {
         return $this->belongsTo('App\Records');
     }

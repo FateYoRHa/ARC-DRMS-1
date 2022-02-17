@@ -13,6 +13,19 @@
             <h2>Record</h2>
         </div>
         <hr />
+
+        @if ($errors->any())
+        <div class="alert alert-secondary fade show" role="alert" id="error-alert">
+
+            @foreach ($errors->all() as $error)
+            <span class="material-icons-round material-icons">
+                error_outline
+            </span> {{ $error }}
+            @endforeach
+
+        </div>
+        @endif
+        
         <div class="primary-details row">
             <div class="col-md-2 profile-img">
                 <img src="{{ asset('images/blank-profile.png') }}" alt="" class="profile-img">

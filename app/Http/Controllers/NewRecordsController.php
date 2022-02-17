@@ -59,6 +59,7 @@ class NewRecordsController extends Controller
             }
             Uploads::insert($insert);
         }
+        
         /** Check if has file then upload in dir of system */
         if ($request->hasfile('files')) {
             foreach ($request->file('files') as $file) {

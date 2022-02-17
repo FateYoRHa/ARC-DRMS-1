@@ -86,7 +86,6 @@ class RecordsController extends Controller
     public function edit($record_id)
     {
         $recordQuery = Records::find($record_id);
-
         $uploadQuery = DB::table('records')
             ->join('uploads', 'id_number', '=', 'uploads.student_id_record')
             ->get();
@@ -119,7 +118,7 @@ class RecordsController extends Controller
                 $insert[$key]['student_id_record'] = $id_record;
             }
 
-            DB::table('uploads')->upsert(['filename' => $name, 'filepath' => $path, 'student_id_record' => $id_record], [], ['filepath']);
+            DB::table('uploads')->upsert(['filename' => $name, 'filepath' => $path, 'student_id_record' => $id_record], ['filename' => $name], ['filepath']);
         }
  
         $recordQuery->save();
@@ -133,8 +132,10 @@ class RecordsController extends Controller
      * @param  \App\Models\Records  $records
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Records $records)
+    public function destroy(Records $records, Uploads $uploads, $upload_id)
     {
-        //
+        $uploads::find($upload_id);
+        $uploads->delete();
+        return redirect('/records')->with('success', 'Delete reservation is a successful');
     }
 }

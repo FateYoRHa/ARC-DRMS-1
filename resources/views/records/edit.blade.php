@@ -69,7 +69,11 @@
                     <tr>
                         @if($recordQuery->id_number == $file->student_id_record)
                         <td>
-                            <a href="{{ asset('uploads/{$file->filename}') }}">{{$file->filename}}</a>
+                            <a href='{{ asset("uploads/{$file->filename}") }}'>{{$file->filename}}</a>
+                        </td>
+                        <td>
+                            <button type="button" id="btnDelete" class="btn btn-outline-danger btn-sm" data-id="{{$file->upload_id}}">Delete</button>
+                            
                         </td>
                         @endif
                     </tr>
@@ -93,5 +97,5 @@
     </div>
 </div>
 <!-- /#page-content-wrapper -->
-
+@include('records.edit_script')
 @endsection

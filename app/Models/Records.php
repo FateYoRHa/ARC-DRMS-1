@@ -29,7 +29,7 @@ class Records extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function records()
+    public function uploads()
     {
         return $this->hasMany('App\Models\Uploads');
     }

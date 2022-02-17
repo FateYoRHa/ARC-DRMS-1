@@ -15,7 +15,7 @@ class CreateUploadsTable extends Migration
     {
         Schema::create('uploads', function (Blueprint $table) {
             $table->id('upload_id');
-            $table->string('filename')->nullable();
+            $table->string('filename')->nullable()->unique();
             $table->string('filepath')->nullable();
             $table->string('student_id_record')->nullable();
             $table->timestamps();
