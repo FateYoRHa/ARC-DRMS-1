@@ -104,37 +104,23 @@
                         <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
                         <a href="{{ route('newrecords.index') }}" class="list-group-item list-group-item-action bg-dark">New Record <span class="material-icons-round material-icons-sidebar">post_add</span></a>
                         <a href="{{ route('import.index') }}" class="list-group-item list-group-item-action bg-dark">Import <span class="material-icons-outlined material-icons-sidebar">upload_file</span></a>
-                        <a href="#" class="list-group-item list-group-item-action bg-dark" hidden>Export</a>
+                        <a href="#" class="list-group-item list-group-item-action bg-dark" hidden></a>
+
                         <a href="#" class="list-group-item list-group-item-action bg-dark" hidden>Archive <span class="material-icons-outlined material-icons-sidebar">archive</span></a>
                     </div>
+                    <hr />
+                    
+                    <div class="list-group" id="dropdown-toggled">
+                        <button onclick="sidebarDropDown()" type="button" class="dropbtn list-group-item list-group-item-action bg-dark">Users <span class="material-icons-outlined material-icons-sidebar-dropdown">expand_more</span></button>
 
-                    <div class="list-group list-group-flush">
-                        <button onclick="myFunction()" type="button" class="dropbtn list-group-item list-group-item-action bg-dark">Users <span class="material-icons-outlined material-icons-sidebar">group</span></button>
-
-                        <div id="myDropdown" class="dropdown-content">
-                            <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark" id="bottom-sidenav">Users <span class="material-icons-outlined material-icons-sidebar">group</span></a>
+                        <div id="sidebar-dropdown" class="dropdown-content">
+                            <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark" id="bottom-sidenav">Accounts <span class="material-icons-outlined material-icons-sidebar">group</span></a>
+                            <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark" id="bottom-sidenav">Register <span class="material-icons-outlined material-icons-sidebar">how_to_reg</span></a>
                         </div>
                     </div>
 
                     <script>
-                        /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
-                        function myFunction() {
-                            document.getElementById("myDropdown").classList.toggle("show");
-                        }
-
-                        // Close the dropdown if the user clicks outside of it
-                        window.onclick = function(event) {
-                            if (!event.target.matches('.dropbtn')) {
-                                var dropdowns = document.getElementsByClassName("dropdown-content");
-                                var i;
-                                for (i = 0; i < dropdowns.length; i++) {
-                                    var openDropdown = dropdowns[i];
-                                    if (openDropdown.classList.contains('show')) {
-                                        openDropdown.classList.remove('show');
-                                    }
-                                }
-                            }
-                        }
+                       
                     </script>
                 </div>
                 <!-- /#sidebar-wrapper -->
