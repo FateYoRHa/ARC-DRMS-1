@@ -22,14 +22,13 @@ class RecordsController extends Controller
         if ($request->ajax()) {
             $data = Records::latest()->get();
             return DataTables::of($data)
-                ->addColumn('name', function($row){
-                    return $row->fName . ' '. $row->mName . ' ' . $row->lName;
+                ->addColumn('name', function ($row) {
+                    return $row->fName . ' ' . $row->mName . ' ' . $row->lName;
                 })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
-                    <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm"><span class="material-icons-outlined material-icons">preview</span></a> 
-                    <a href="/records/' . $row->record_id . '/edit" class="edit btn btn-info btn-sm"><span class="material-icons-outlined material-icons">info</span></a> 
-                    <a href="javascript:void(0)" class="delete btn btn-outline-danger btn-sm"><span class="material-icons-outlined material-icons">delete</span></a>';
+                    <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span></a> 
+                    <a href="javascript:void(0)" class="delete btn btn-outline-danger btn-sm" title="Delete Record"><span class="material-icons-outlined material-icons">delete</span></a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -120,10 +119,10 @@ class RecordsController extends Controller
 
             DB::table('uploads')->upsert(['filename' => $name, 'filepath' => $path, 'student_id_record' => $id_record], ['filename' => $name], ['filepath']);
         }
- 
+
         $recordQuery->save();
 
-        return redirect('/records')->with('success', 'Updated successfully!');
+        return back()->with('success', 'Updated successfully!');
     }
 
     /**
@@ -132,10 +131,8 @@ class RecordsController extends Controller
      * @param  \App\Models\Records  $records
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Records $records, Uploads $uploads, $upload_id)
+    public function destroy(Records $records)
     {
-        $uploads::find($upload_id);
-        $uploads->delete();
-        return redirect('/records')->with('success', 'Delete reservation is a successful');
+        //
     }
 }

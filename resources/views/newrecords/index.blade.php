@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@include('newrecords.index_script')
+@include('newrecords.newrecords_script')
 @section('content')
 
 <!-- Page Content -->

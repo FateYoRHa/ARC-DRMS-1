@@ -7,8 +7,6 @@
         });
 
         $('body').on('click', '#btnDelete', function() {
-            data_id = $(this).attr('data-id');
-            console.log(data_id);
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -23,9 +21,10 @@
                     console.log(data_id);
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('records.index')}}" + '/' + data_id,
-
+                        url: "{{ route('uploads.index')}}" + '/' + data_id,
+                        id: data_id,
                         success: function() {
+                            location.reload();
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',

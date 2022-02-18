@@ -25,18 +25,22 @@
 
         </div>
         @endif
-        
+
         <div class="primary-details row">
             <div class="col-md-2 profile-img">
                 <img src="{{ asset('images/blank-profile.png') }}" alt="" class="profile-img">
             </div>
             <div class="col-md-10 row profile-details">
                 <div class="col">
-                    <label for="idNumber" class="col-form-label-lg">ID Number</label>
+                    <div class=" edit-record-btn">
+                        <a href="\records\{{$recordQuery->record_id}}\edit" class="edit-record btn btn-secondary py-0">Edit</a>
+                    </div>
+                    <label for="idNumber" class="col-form-label-md primary-details-content">ID Number</label>
                     <p>{{$recordQuery->id_number}}</p>
-                    <label for="name" class="col-form-label-lg">Name</label>
+                    <label for="name" class="col-form-label-md primary-details-content">Name</label>
                     <p>{{$recordQuery->fName}} {{$recordQuery->mName}} {{$recordQuery->lName}}</p>
                 </div>
+
             </div>
         </div>
 

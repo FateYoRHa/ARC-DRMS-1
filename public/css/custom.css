@@ -54,6 +54,15 @@ body {
     
 }
 
+/* custom login */
+.login-img {
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+
+
 /* page-content-wrapper */
 .new-record-submit {
     float: right;
@@ -96,20 +105,27 @@ body {
 
 /* custom show page */
 .profile-img img{
-    width: 80%;
-    display: inline-block;
+    width: 90%;
+    display: block;
     border-radius: 8px;
-    
+    margin:auto;
+}
+.primary-details, .profile-img {
+    margin-bottom: 1rem;
+}
+.profile-img img, .profile-details {
     padding: 10px;
     box-shadow: 3px 2px #888888;
-}
-.primary-details {
-    margin-bottom: 1rem;
 }
 .profile-details{
     background-color: rgb(255, 255, 236);
     border-radius: 5px;
-    padding: 10px;
-    box-shadow: 3px 2px #888888;
+}
+.primary-details-content {
+    text-decoration: underline rgb(136, 136, 136);
+    text-transform:uppercase;
+}
+.edit-record{
+ float: right;
 }
 

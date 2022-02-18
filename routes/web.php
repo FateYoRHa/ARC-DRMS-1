@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\View;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -26,7 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('records', App\Http\Controllers\RecordsController::class);
 Route::resource('newrecords', App\Http\Controllers\NewRecordsController::class);
 Route::resource('import', App\Http\Controllers\ImportController::class);
-
+Route::resource('uploads', App\Http\Controllers\UploadsController::class);
 //DocumentViewer Library
 Route::any('ViewerJS/{all?}', function(){
 
