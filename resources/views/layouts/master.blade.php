@@ -26,7 +26,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/media-query.css') }}" rel="stylesheet">
 
-    
+
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -35,7 +35,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('#') }}" >
+                <a class="navbar-brand" href="{{ url('#') }}">
                     {{ config('app.name', 'ARC DBMS') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -51,7 +51,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @guest
+                        <!-- @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -80,7 +80,7 @@
                                 </form>
                             </div>
                         </li>
-                        @endguest
+                        @endguest -->
                     </ul>
                 </div>
             </div>
@@ -99,14 +99,43 @@
                             @csrf
                         </form>
                     </div>
-                    <div class="sidebar-heading"><img src="{{ asset('images/ubseal.png') }}" alt="ubseal"> </div>
-                    <div class="list-group list-group-flush">
+                    <div class="sidebar-heading"><img src="{{ asset('images/ubseal.png') }}" alt="ubseal"></div>
+                    <div class="list-group list-group-flush mb-auto">
                         <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
                         <a href="{{ route('newrecords.index') }}" class="list-group-item list-group-item-action bg-dark">New Record <span class="material-icons-round material-icons-sidebar">post_add</span></a>
                         <a href="{{ route('import.index') }}" class="list-group-item list-group-item-action bg-dark">Import <span class="material-icons-outlined material-icons-sidebar">upload_file</span></a>
                         <a href="#" class="list-group-item list-group-item-action bg-dark" hidden>Export</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-dark">Archive <span class="material-icons-outlined material-icons-sidebar">archive</span></a>
+                        <a href="#" class="list-group-item list-group-item-action bg-dark" hidden>Archive <span class="material-icons-outlined material-icons-sidebar">archive</span></a>
                     </div>
+
+                    <div class="list-group list-group-flush">
+                        <button onclick="myFunction()" type="button" class="dropbtn list-group-item list-group-item-action bg-dark">Users <span class="material-icons-outlined material-icons-sidebar">group</span></button>
+
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark" id="bottom-sidenav">Users <span class="material-icons-outlined material-icons-sidebar">group</span></a>
+                        </div>
+                    </div>
+
+                    <script>
+                        /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+                        function myFunction() {
+                            document.getElementById("myDropdown").classList.toggle("show");
+                        }
+
+                        // Close the dropdown if the user clicks outside of it
+                        window.onclick = function(event) {
+                            if (!event.target.matches('.dropbtn')) {
+                                var dropdowns = document.getElementsByClassName("dropdown-content");
+                                var i;
+                                for (i = 0; i < dropdowns.length; i++) {
+                                    var openDropdown = dropdowns[i];
+                                    if (openDropdown.classList.contains('show')) {
+                                        openDropdown.classList.remove('show');
+                                    }
+                                }
+                            }
+                        }
+                    </script>
                 </div>
                 <!-- /#sidebar-wrapper -->
             </aside>
