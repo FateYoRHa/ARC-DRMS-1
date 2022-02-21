@@ -15,8 +15,9 @@ class RecordsFactory extends Factory
     {
         return [
             'id_number'=> $this->faker->numberBetween(20000000, 29999999),
-            'name' => $this->faker->name,
-
+            'fName' => $this->faker->firstname(),
+            'mName' => $this->faker->randomElement(['Jon', 'Sur', 'Mer', 'Pol']),
+            'lName' => $this->faker->lastname(),
         ];
     }
 }

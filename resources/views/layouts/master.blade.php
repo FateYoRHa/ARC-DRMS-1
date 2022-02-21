@@ -100,7 +100,7 @@
                         </form>
                     </div>
                     <div class="sidebar-heading"><img src="{{ asset('images/ubseal.png') }}" alt="ubseal"></div>
-                    <div class="list-group list-group-flush mb-auto">
+                    <div class="list-group list-group-flush">
                         <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
                         <a href="{{ route('newrecords.index') }}" class="list-group-item list-group-item-action bg-dark">New Record <span class="material-icons-round material-icons-sidebar">post_add</span></a>
                         <a href="{{ route('import.index') }}" class="list-group-item list-group-item-action bg-dark">Import <span class="material-icons-outlined material-icons-sidebar">upload_file</span></a>

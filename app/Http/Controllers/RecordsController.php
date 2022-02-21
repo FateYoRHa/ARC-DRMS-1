@@ -28,7 +28,8 @@ class RecordsController extends Controller
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
                     <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span></a> 
-                    <a href="javascript:void(0)" class="delete btn btn-outline-danger btn-sm" title="Delete Record"><span class="material-icons-outlined material-icons">delete</span></a>';
+                    <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->record_id. ' "><span class="material-icons-outlined material-icons">delete</span></button>';
+            
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -131,8 +132,14 @@ class RecordsController extends Controller
      * @param  \App\Models\Records  $records
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Records $records)
+    public function destroy(Records $records, $record_id)
     {
-        //
+        $records_id = $record_id;
+        $recordQuery= $records::find($records_id);
+        $recordQuery->delete();
+
+        return response()->json([
+            'message' => 'Data deleted successfully!'
+        ]);
     }
 }

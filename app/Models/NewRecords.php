@@ -18,7 +18,9 @@ class NewRecords extends Model
 
     protected $fillable = [
         "id_number",
-        "name",
+        "fName",
+        "mName",
+        "lName",
         "file_path"
     ];
 
