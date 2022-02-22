@@ -27,8 +27,8 @@ class RecordsController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
-                    <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span></a> 
-                    <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->record_id. ' "><span class="material-icons-outlined material-icons">delete</span></button>';
+                    <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span> Preview</a> 
+                    <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->record_id. ' "><span class="material-icons-outlined material-icons">delete</span> Delete</button>';
             
                     return $actionBtn;
                 })

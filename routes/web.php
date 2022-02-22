@@ -27,6 +27,8 @@ Route::resource('records', App\Http\Controllers\RecordsController::class);
 Route::resource('newrecords', App\Http\Controllers\NewRecordsController::class);
 Route::resource('import', App\Http\Controllers\ImportController::class);
 Route::resource('uploads', App\Http\Controllers\UploadsController::class);
+Route::resource('users', App\Http\Controllers\UserController::class);
+
 //DocumentViewer Library
 Route::any('ViewerJS/{all?}', function(){
 

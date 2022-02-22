@@ -107,21 +107,25 @@
                         <a href="#" class="list-group-item list-group-item-action bg-dark" hidden></a>
 
                         <a href="#" class="list-group-item list-group-item-action bg-dark" hidden>Archive <span class="material-icons-outlined material-icons-sidebar">archive</span></a>
-                    </div>
-                    <hr />
-                    
-                    <div class="list-group" id="dropdown-toggled">
-                        <button onclick="sidebarDropDown()" type="button" class="dropbtn list-group-item list-group-item-action bg-dark">Users <span class="material-icons-outlined material-icons-sidebar-dropdown">expand_more</span></button>
 
-                        <div id="sidebar-dropdown" class="dropdown-content">
-                            <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark" id="bottom-sidenav">Accounts <span class="material-icons-outlined material-icons-sidebar">group</span></a>
-                            <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark" id="bottom-sidenav">Register <span class="material-icons-outlined material-icons-sidebar">how_to_reg</span></a>
+                        <div class="list-group list-group-flush fixed-bottom">
+                            <div class="dropdown">
+                                <a class="list-group-item list-group-item-action bg-dark" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Users <span class="material-icons-outlined material-icons-sidebar">
+                                        keyboard_arrow_up
+                                    </span>
+                                </a>
+
+                                <ul class="dropdown-menu list-group list-group-flush bg-dark" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="list-group-item list-group-item-action bg-dark" href="{{ route('register') }}">Register</a></li>
+                                    <li><a class="list-group-item list-group-item-action bg-dark" href="{{ route('users.index') }}"><span class="material-icons-outlined material-icons-sidebar">view_list</span> User List</a></li>
+
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
-                    <script>
-                       
-                    </script>
+
                 </div>
                 <!-- /#sidebar-wrapper -->
             </aside>

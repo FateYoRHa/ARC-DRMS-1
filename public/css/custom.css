@@ -40,7 +40,7 @@ body {
     width: 12rem;
 }
 #page-content-wrapper {
-    min-width: 98vw;
+    min-width: 90vw;
 }
 #wrapper.toggled #sidebar-wrapper {
     margin-left: 0;
@@ -48,6 +48,14 @@ body {
 .list-group-item-action {
     color: rgba(255, 255, 255, 0.788) !important;
     font-weight: lighter;
+}
+.dropdown .list-group-item-action {
+    color: rgba(255, 255, 255, 0.788) !important;
+    font-weight: lighter;
+}
+.dropdown-menu {
+    padding: 0 !important;
+    border: none !important;
 }
 .list-group-item {
     padding: 0.25rem 1rem !important;
@@ -146,19 +154,4 @@ body {
 }
 .edit-record{
  float: right;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-display: none;
-position: relative;
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-visibility: hidden;
-z-index: 1;
-}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {
-    display:block;
-    visibility: visible;
 }

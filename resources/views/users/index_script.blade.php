@@ -6,45 +6,50 @@
             serverSide: true,
             responsive: true,
             autofill: true,
-            ajax: "{{ route('records.index') }}",
+            ajax: "{{ route('users.index') }}",
             columns: [{
-                    data: 'record_id',
+                    data: 'user_id',
                     name: 'record Id',
                     searchable: false,
                     sortable: false,
                     visible: false
                 },
                 {
-                    data: 'id_number',
-                    name: 'id_number'
+                    data: 'username',
+                    name: 'username',
+                    searchable: true,
+                    sortable: true,
+                    visible: true
                 },
                 {
-                    data: 'name',
-                    name: 'name',
+                    data: 'idNumber',
+                    name: 'idNumber'
+                },
+                {
+                    data: 'password',
+                    name: 'password',
+                    searchable: false,
+                    visible: false
+                },
+                {
+                    data: 'remember_token',
+                    name: 'remember_token',
+                    searchable: false,
+                    visible: false
+                },
+                {
+                    data: 'created_at',
+                    name: 'created_at',
                     searchable: false,
                     sortable: true,
                     visible: true
                 },
                 {
-                    data: 'fName',
-                    name: 'fName',
-                    searchable: true,
+                    data: 'updated_at',
+                    name: 'updated_at',
+                    searchable: false,
                     sortable: true,
-                    visible: false
-                },
-                {
-                    data: 'mName',
-                    name: 'mName',
-                    searchable: true,
-                    sortable: true,
-                    visible: false
-                },
-                {
-                    data: 'lName',
-                    name: 'lName',
-                    searchable: true,
-                    sortable: true,
-                    visible: false
+                    visible: true
                 },
                 {
                     data: 'action',
@@ -55,18 +60,22 @@
             ],
             scrollY: '55vh',
             scrollX: true,
-            scrollCollapse: true,
             columnDefs: [{
-                targets: 0,
-                visible: true,
-                searchable: false
-            }],
-            
+                    targets: 0,
+                    visible: true,
+                    searchable: false
+                },
+                {
+                    defaultContent: "-",
+                    targets: "_all",
+                }
+            ],
+
+
         });
 
     });
 
-    //button delete
     $(document).ready(function() {
         $.ajaxSetup({
             headers: {
@@ -75,8 +84,6 @@
         });
 
         $('body').on('click', '#btnDelete', function() {
-            data_id = $(this).attr('data-id');
-            console.log(data_id);
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -91,13 +98,13 @@
                     console.log(data_id);
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('records.index')}}" + '/' + data_id,
+                        url: "{{ route('users.index')}}" + '/' + data_id,
                         id: data_id,
                         success: function() {
                             location.reload();
                             Swal.fire(
                                 'Deleted!',
-                                'Your record has been deleted.',
+                                'Your file has been deleted.',
                                 'success'
                             )
                         },

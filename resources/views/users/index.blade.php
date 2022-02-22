@@ -1,9 +1,6 @@
 @extends('layouts.master')
 
-
 @section('content')
-
-<!-- Page Content -->
 <div id="page-content-wrapper">
 
     <div class="container-fluid">
@@ -12,7 +9,7 @@
         </div>
 
         <div class="page-content-title">
-            <h2>Records</h2>
+            <h2>User List</h2>
         </div>
         <hr />
 
@@ -20,11 +17,12 @@
             <thead>
                 <tr>
                     <th>Record ID</th>
+                    <th>Name</th>
                     <th>Id Number</th>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
+                    <th>Password</th>
+                    <th>Remember_token</th>
+                    <th>Created</th>
+                    <th>Updated</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -32,9 +30,7 @@
             </tbody>
         </table>
         <!-- include script here for datatable entries -->
-        @include('records.index_script') 
+        @include('users.index_script')
     </div>
 </div>
-
-<!-- /#page-content-wrapper -->
 @endsection
