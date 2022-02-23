@@ -6,6 +6,11 @@ use App\Models\Import;
 use App\Http\Requests\StoreImportRequest;
 use App\Http\Requests\UpdateImportRequest;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ImportFile;
+use App\Exports\FileExport;
+use Illuminate\Http\Request;
+
 class ImportController extends Controller
 {
     /**
@@ -83,4 +88,21 @@ class ImportController extends Controller
     {
         //
     }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function fileImport(StoreImportRequest $request) 
+    {
+        Excel::import(new ImportFile, $request->file('file')->store('temp'));
+        return back();
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function fileExport() 
+    {
+        return Excel::download(new FileExport, 'records-collection.xlsx');
+    }    
 }

@@ -21,7 +21,6 @@ class NewRecords extends Model
         "fName",
         "mName",
         "lName",
-        "file_path"
     ];
 
     public function record()

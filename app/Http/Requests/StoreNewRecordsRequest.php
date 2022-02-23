@@ -37,7 +37,7 @@ class StoreNewRecordsRequest extends FormRequest
             'inputFname' => 'required',
             'inputMname' => 'required',
             'inputLname' => 'required',
-            
+            'files' => 'mimetypes:pdf',
         ];
     }
     public function messages()

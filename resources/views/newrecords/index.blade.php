@@ -21,9 +21,9 @@
                 error_outline
             </span> {{ $error }}
             @endforeach
-
         </div>
         @endif
+
         <form action="{{ route('newrecords.store') }}" method="POST" class="row g-3" id="new-record-form" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="col-md-12">
@@ -45,6 +45,7 @@
             <div class="col-md-5">
                 <label for="upload-file-new" class="upload-file-new">Import File<span class="material-icons-outlined material-icons-newrecord">upload</span></label>
                 <input type="file" class="form-control-file" id="files" name="files[]" multiple>
+                
             </div>
           
             <div class="col-12">

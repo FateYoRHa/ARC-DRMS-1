@@ -29,8 +29,10 @@ Route::resource('import', App\Http\Controllers\ImportController::class);
 Route::resource('uploads', App\Http\Controllers\UploadsController::class);
 Route::resource('users', App\Http\Controllers\UserController::class);
 
+Route::post('file-import', [App\Http\Controllers\ImportController::class, 'fileImport'])->name('file-import');
+Route::get('file-export', [App\Http\Controllers\ImportController::class, 'fileExport'])->name('file-export');
+
 //DocumentViewer Library
 Route::any('ViewerJS/{all?}', function(){
-
     return View::make('ViewerJS.index');
 });

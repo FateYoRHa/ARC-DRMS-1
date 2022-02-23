@@ -14,19 +14,24 @@
         </div>
         <hr />
         <div class="import-content">
-            <p>Import files with the extension names(.xlsx, ......, )</p>
-            <!-- <div class="col-md">
-                <label for="exampleFormControlFile1">Import File <span class="material-icons-outlined material-icons-newrecord">upload</span></label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div> -->
-            <div class="input-group">
-                <input type="file" class="form-control" id="inputGroupFile02">
-                <button class="btn btn-outline-secondary" type="button">Upload</button>
-            </div>
+            <p>Import files with the extension names(.xlsx, ..........., )</p>
+            <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group mb-4">
+                    <div class="custom-file">
+                        <input type="file" name="file" class="form-control @error('file') is-invalid @enderror" id="customFile" required>
+
+                        @error('file')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                <button class="btn btn-primary">Import data</button>
+                <a class="btn btn-success" href="{{ route('file-export') }}">Export data</a>
+            </form>
         </div>
-
-
-
     </div>
 </div>
 <!-- /#page-content-wrapper -->

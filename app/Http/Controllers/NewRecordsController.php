@@ -45,7 +45,7 @@ class NewRecordsController extends Controller
         $recordQuery->fName = $request->input('inputFname');
         $recordQuery->mName = $request->input('inputMname');
         $recordQuery->lName = $request->input('inputLname');
-
+        
         /** Check if has file then get filename as key and insert in db */
         if ($request->hasfile('files')) {
             foreach ($request->file('files') as $key => $file) {
@@ -56,7 +56,7 @@ class NewRecordsController extends Controller
                 $insert[$key]['filename'] = $name;
                 $insert[$key]['filepath'] = $path;
             }
-            Uploads::insert($insert);
+            Uploads::create($insert);
         }
         
         /** Check if has file then upload in dir of system */

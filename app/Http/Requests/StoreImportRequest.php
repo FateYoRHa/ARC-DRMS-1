@@ -13,7 +13,7 @@ class StoreImportRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class StoreImportRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'file' => 'required|mimes:xlsx, csv, xls'
         ];
     }
 }
