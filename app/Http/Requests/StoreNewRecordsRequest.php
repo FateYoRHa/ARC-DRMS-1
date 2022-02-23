@@ -37,16 +37,12 @@ class StoreNewRecordsRequest extends FormRequest
             'inputFname' => 'required',
             'inputMname' => 'required',
             'inputLname' => 'required',
-            'files' => 'mimetypes:pdf',
+            'files' => 'mimetypes:application/pdf',
         ];
     }
     public function messages()
     {
         return [
-            // 'id_number' => [
-            //     'required' => 'ID number is required',
-            //     'unique' => 'ID numbe must be unique'
-            // ],
             'id_number.required' => 'ID Number is Required',
             'id_number.unique' => 'ID Number must be unique',
             'inputFname.required' => 'First Name is required',

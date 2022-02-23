@@ -117,10 +117,8 @@ class RecordsController extends Controller
                 $insert[$key]['filepath'] = $path;
                 $insert[$key]['student_id_record'] = $id_record;
             }
-
-            DB::table('uploads')->upsert(['filename' => $name, 'filepath' => $path, 'student_id_record' => $id_record], ['filename' => $name], ['filepath']);
+            DB::table('uploads')->upsert($insert, ['filename' => $name, 'filepath' => $path, 'student_id_record' => $id_record], ['filename' => $name], ['filepath']);
         }
-
         $recordQuery->save();
 
         return back()->with('success', 'Updated successfully!');

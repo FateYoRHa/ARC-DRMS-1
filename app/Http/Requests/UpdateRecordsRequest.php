@@ -24,7 +24,10 @@ class UpdateRecordsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'inputFname' => 'required',
+            'inputMname' => 'required',
+            'inputLname' => 'required',
+            'files' => 'mimetypes:application/pdf',
         ];
     }
 }

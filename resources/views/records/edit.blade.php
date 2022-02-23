@@ -46,7 +46,7 @@
                 <input type="text" class="form-control form-control-sm" id="inputLname" name="inputLname" value="{{$recordQuery->lName}}" required>
             </div>
             <div class="col-md-4">
-                <label for="upload-file-new">Import File<span class="material-icons-outlined material-icons-newrecord">upload</span></label>
+                <label for="upload-file-new" class="upload-file-new">Import File<span class="material-icons-outlined material-icons-newrecord">upload</span></label>
                 <input type="file" class="form-control-file" id="files" name="files[]" multiple>
             </div>
             <div class="col-12">

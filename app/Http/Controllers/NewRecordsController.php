@@ -56,7 +56,7 @@ class NewRecordsController extends Controller
                 $insert[$key]['filename'] = $name;
                 $insert[$key]['filepath'] = $path;
             }
-            Uploads::create($insert);
+            Uploads::insert($insert);
         }
         
         /** Check if has file then upload in dir of system */
@@ -108,25 +108,9 @@ class NewRecordsController extends Controller
      * @param  \App\Models\NewRecords  $newRecords
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateNewRecordsRequest $request, NewRecords $newRecords, $record_id)
+    public function update(UpdateNewRecordsRequest $request, NewRecords $newRecords)
     {
-        $recordQuery = Records::find($record_id);
-        $recordQuery->id_number = $request->input('id_number');
-        $recordQuery->student_name = $request->input('student_name');
-
-        if ($request->hasfile('files')) {
-            foreach ($request->file('files') as $key => $file) {
-                $path = $file->store('public/files');
-                $name = $file->getClientOriginalName();
-                $student_id_record = $request->input('id_number');
-                $insert[$key]['student_id_record'] = $student_id_record;
-                $insert[$key]['filename'] = $name;
-                $insert[$key]['filepath'] = $path;
-            }
-        }
-        $recordQuery->save();
-
-        return redirect('/import')->with('success', 'Updated successfully!');
+        //
     }
 
     /**
