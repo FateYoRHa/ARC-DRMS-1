@@ -18,6 +18,7 @@ class CreateUploadsTable extends Migration
             $table->string('filename')->nullable()->unique();
             $table->string('filepath')->nullable();
             $table->string('student_id_record')->nullable();
+            $table->integer('for_record_id');
             $table->timestamps();
         });
     }

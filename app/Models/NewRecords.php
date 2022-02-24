@@ -21,6 +21,7 @@ class NewRecords extends Model
         "fName",
         "mName",
         "lName",
+        "record_upload_id"
     ];
 
     public function record()

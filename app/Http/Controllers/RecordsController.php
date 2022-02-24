@@ -107,19 +107,21 @@ class RecordsController extends Controller
         $recordQuery->fName = $request->input('inputFname');
         $recordQuery->mName = $request->input('inputMname');
         $recordQuery->lName = $request->input('inputLname');
-
+        $recordQuery->save();
+        
         if ($request->hasfile('files')) {
             foreach ($request->file('files') as $key => $file) {
                 $path = $file->store('public/files');
                 $name = $file->getClientOriginalName();
                 $id_record = $request->input('id_number');
+                $for_record_id = $recordQuery->record_id;
                 $insert[$key]['filename'] = $name;
                 $insert[$key]['filepath'] = $path;
                 $insert[$key]['student_id_record'] = $id_record;
+                $insert[$key]['for_record_id'] = $for_record_id;
             }
             DB::table('uploads')->upsert($insert, ['filename' => $name, 'filepath' => $path, 'student_id_record' => $id_record], ['filename' => $name], ['filepath']);
         }
-        $recordQuery->save();
 
         return back()->with('success', 'Updated successfully!');
     }
@@ -133,9 +135,13 @@ class RecordsController extends Controller
     public function destroy(Records $records, $record_id)
     {
         $records_id = $record_id;
-        $recordQuery= $records::find($records_id);
-        
+        $recordQuery = $records::find($records_id);
         $recordQuery->delete();
+
+        $uploadQuery = DB::table('uploads') 
+        ->leftJoin('records', 'student_id_record', 'records.id_number')
+        ->where('for_record_id', $record_id);
+        $uploadQuery->delete();
 
         return response()->json([
             'message' => 'Data deleted successfully!'
