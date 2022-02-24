@@ -37,7 +37,8 @@ class StoreNewRecordsRequest extends FormRequest
             'inputFname' => 'required',
             'inputMname' => 'required',
             'inputLname' => 'required',
-            'files' => 'mimetypes:application/pdf',
+            'files' => 'nullable',
+            'files.*' => 'mimes:pdf'
         ];
     }
     public function messages()
@@ -48,6 +49,7 @@ class StoreNewRecordsRequest extends FormRequest
             'inputFname.required' => 'First Name is required',
             'inputMname.required' => 'Middle Name is required',
             'inputLname.required' => 'Last Name is required',
+            'files.*.mimes' => 'File must be a PDF'
         ];
     }
 }

@@ -21,7 +21,6 @@ class Records extends Model
         "fName",
         "mName",
         "lName",
-        "file_path"
     ];
 
     public function user()

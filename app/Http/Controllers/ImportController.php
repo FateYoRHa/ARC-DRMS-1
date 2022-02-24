@@ -9,7 +9,10 @@ use App\Http\Requests\UpdateImportRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ImportFile;
 use App\Exports\FileExport;
+use App\Models\Records;
 use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\isEmpty;
 
 class ImportController extends Controller
 {
@@ -103,6 +106,11 @@ class ImportController extends Controller
     */
     public function fileExport() 
     {
-        return Excel::download(new FileExport, 'records-collection.xlsx');
+        if(Records::exists()) {
+            return Excel::download(new FileExport, 'records-collection.xlsx');
+            
+        } else {
+            return redirect()->back()->with('error', 'No records found');
+        }
     }    
 }

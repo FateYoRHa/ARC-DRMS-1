@@ -45,8 +45,12 @@ class NewRecordsController extends Controller
         $recordQuery->fName = $request->input('inputFname');
         $recordQuery->mName = $request->input('inputMname');
         $recordQuery->lName = $request->input('inputLname');
-        
+
         /** Check if has file then get filename as key and insert in db */
+        // $validatedData = $request->validate([
+        //     'files' => 'nullable',
+        //     'files.*' => 'mimes:pdf'
+        // ]);
         if ($request->hasfile('files')) {
             foreach ($request->file('files') as $key => $file) {
                 $path = $file->store('public/files');
@@ -58,21 +62,21 @@ class NewRecordsController extends Controller
             }
             Uploads::insert($insert);
         }
-        
+
         /** Check if has file then upload in dir of system */
         if ($request->hasfile('files')) {
             foreach ($request->file('files') as $file) {
                 $name = $file->getClientOriginalName();
-                $file->move(public_path().'/uploads/', $name);  
-                $data[] = $name; 
+                $file->move(public_path() . '/uploads/', $name);
+                $data[] = $name;
             }
         }
 
-        
+
 
         // $fileName = time() . '.'. $request->file->extension();  
         // $request->file->move(public_path('file'), $fileName);
-       
+
 
         $recordQuery->save();
 
@@ -98,7 +102,6 @@ class NewRecordsController extends Controller
      */
     public function edit(NewRecords $newRecords)
     {
-        
     }
 
     /**

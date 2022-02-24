@@ -16,6 +16,13 @@ class UpdateRecordsRequest extends FormRequest
         return true;
     }
 
+        /**
+     * Indicates if the validator should stop on the first rule failure.
+     *
+     * @var bool
+     */
+    protected $stopOnFirstFailure = true;
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,7 +34,20 @@ class UpdateRecordsRequest extends FormRequest
             'inputFname' => 'required',
             'inputMname' => 'required',
             'inputLname' => 'required',
-            'files' => 'mimetypes:application/pdf',
+            'files' => 'nullable',
+            'files.*' => 'mimes:pdf'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'id_number.required' => 'ID Number is required',
+            'id_number.unique' => 'ID Number must be unique',
+            'inputFname.required' => 'First Name is required',
+            'inputMname.required' => 'Middle Name is required',
+            'inputLname.required' => 'Last Name is required',
+            'files.*.mimes' => 'File must be a PDF'
         ];
     }
 }

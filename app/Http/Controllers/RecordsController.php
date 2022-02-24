@@ -134,6 +134,7 @@ class RecordsController extends Controller
     {
         $records_id = $record_id;
         $recordQuery= $records::find($records_id);
+        
         $recordQuery->delete();
 
         return response()->json([
