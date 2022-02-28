@@ -100,6 +100,8 @@
                         </form>
                     </div>
                     <div class="sidebar-heading"><img src="{{ asset('images/ubseal.png') }}" alt="ubseal"></div>
+                    <div class="list-group-flush list-group-item-action bg-dark" id="user-display"> <span class="badge bg-danger">{{ Auth::user()->username }}</span></div>
+                    <a href="" class="btn" id="user-display-password">Change Password</a>
                     <div class="list-group list-group-flush">
                         <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
                         <a href="{{ route('newrecords.index') }}" class="list-group-item list-group-item-action bg-dark">New Record <span class="material-icons-round material-icons-sidebar">post_add</span></a>

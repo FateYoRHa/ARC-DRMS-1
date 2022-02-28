@@ -7,11 +7,22 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,22 +30,32 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+
+
         if ($request->ajax()) {
             $data = User::latest()->get();
+
             return DataTables::of($data)
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '
-                    <a href="/users/' . $row->user_id . '/edit" class="edit btn btn-secondary btn-sm" title="Reset Password"><span class="material-icons-outlined material-icons">restart_alt</span> Reset Password</a> 
-                    <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->user_id . ' "><span class="material-icons-outlined material-icons">delete</span> Delete</button>';
-
+                    // Get the currently authenticated user
+                    $user = Auth::user();
+                    if ($user == $row) {
+                        $actionBtn = '';
+                    } else if ($user != "Admin") {
+                        $actionBtn = '
+                        <a href="/users/' . $row->user_id . '/edit" class="edit btn btn-secondary btn-sm" title="Reset Password"><span class="material-icons-outlined material-icons">restart_alt</span> Reset Password</a> 
+                        <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->user_id . ' "><span class="material-icons-outlined material-icons">delete</span> Delete</button>';
+                    }
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
                 ->editColumn('created_at', function ($row) {
+                    //Format Date to Readable format
                     $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $row->created_at)->format('d-m-Y h:i a');
                     return $formatedDate;
                 })
                 ->editColumn('updated_at', function ($row) {
+                     //Format Date to Readable format
                     $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $row->updated_at)->format('d-m-Y h:i a');
                     return $formatedDate;
                 })
@@ -96,6 +117,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, $user_id)
     {
+        //Find id. If none, fails.
         $userQuery = User::findOrFail($user_id);
         $userQuery->username = $request->input('username');
         $userQuery->idNumber = $request->input('idNumber');
@@ -115,7 +137,7 @@ class UserController extends Controller
     public function destroy($user_id)
     {
         $users_id = $user_id;
-        $recordQuery= User::findOrFail($users_id);
+        $recordQuery = User::findOrFail($users_id);
         $recordQuery->delete();
 
         return response()->json([

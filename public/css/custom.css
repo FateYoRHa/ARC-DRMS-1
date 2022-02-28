@@ -23,6 +23,17 @@ body {
     display: block;
     margin: auto;
 }
+
+#sidebar-wrapper #user-display { 
+    text-align: center;
+}
+#sidebar-wrapper #user-display-password { 
+    display: block;
+    margin: auto;
+    color:white;
+    font-size: 0.8em;
+    padding: 0em 0.75rem !important;
+}
 #sidebar-wrapper {
     min-height:100vh;
     margin-left: -12rem;

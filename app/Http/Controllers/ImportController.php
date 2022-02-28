@@ -17,6 +17,16 @@ use function PHPUnit\Framework\isEmpty;
 class ImportController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -93,24 +103,24 @@ class ImportController extends Controller
     }
 
     /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function fileImport(StoreImportRequest $request) 
+     * @return \Illuminate\Support\Collection
+     */
+    public function fileImport(StoreImportRequest $request)
     {
         Excel::import(new ImportFile, $request->file('file')->store('temp'));
         return back();
     }
 
     /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function fileExport() 
+     * @return \Illuminate\Support\Collection
+     */
+    public function fileExport()
     {
-        if(Records::exists()) {
+        //Check if records exist if not return no records found.
+        if (Records::exists()) {
             return Excel::download(new FileExport, 'records-collection.xlsx');
-            
         } else {
             return redirect()->back()->with('error', 'No records found');
         }
-    }    
+    }
 }

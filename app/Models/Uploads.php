@@ -32,4 +32,9 @@ class Uploads extends Model
     {
         return $this->belongsTo('App\Records');
     }
+    
+    public function newrecords()
+    {
+        return $this->belongsTo('App\NewRecords');
+    }
 }

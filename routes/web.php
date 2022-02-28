@@ -15,24 +15,32 @@ use Illuminate\Support\Facades\View;
 |
 */
 
+
+Auth::routes();
+
 Route::get('/', function () {
     return view('auth.login');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('records', App\Http\Controllers\RecordsController::class);
-Route::resource('newrecords', App\Http\Controllers\NewRecordsController::class);
-Route::resource('import', App\Http\Controllers\ImportController::class);
-Route::resource('uploads', App\Http\Controllers\UploadsController::class);
-Route::resource('users', App\Http\Controllers\UserController::class);
-
-Route::post('file-import', [App\Http\Controllers\ImportController::class, 'fileImport'])->name('file-import');
-Route::get('file-export', [App\Http\Controllers\ImportController::class, 'fileExport'])->name('file-export');
 
 //DocumentViewer Library
 Route::any('ViewerJS/{all?}', function(){
     return View::make('ViewerJS.index');
+});
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+    Route::resource('records', App\Http\Controllers\RecordsController::class);
+    Route::resource('newrecords', App\Http\Controllers\NewRecordsController::class);
+    Route::resource('import', App\Http\Controllers\ImportController::class);
+    Route::resource('uploads', App\Http\Controllers\UploadsController::class);
+    Route::resource('users', App\Http\Controllers\UserController::class);
+    
+    Route::post('file-import', [App\Http\Controllers\ImportController::class, 'fileImport'])->name('file-import');
+    Route::get('file-export', [App\Http\Controllers\ImportController::class, 'fileExport'])->name('file-export');
+
 });

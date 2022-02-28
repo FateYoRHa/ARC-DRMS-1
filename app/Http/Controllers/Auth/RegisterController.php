@@ -53,7 +53,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
             'idNumber' => ['required', 'integer', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -68,7 +68,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'idNumber' => $data['idNumber'],
             'password' => Hash::make($data['password']),
         ]);
@@ -80,7 +80,7 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
         return $this->registered($request, $user)
             // ?: redirect($this->redirectPath());
-            ?: redirect('register')->with('success', 'Successfully Registered!');
+            ?: redirect('users')->with('success', 'Successfully Registered!');
 
     }
 }

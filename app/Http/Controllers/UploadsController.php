@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Request;
 class UploadsController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -83,7 +93,7 @@ class UploadsController extends Controller
     public function destroy(Uploads $uploads, Request $request, $upload_id)
     {
         $uploads_id = $upload_id;
-        $uploadsQuery= $uploads::find($uploads_id);
+        $uploadsQuery = $uploads::find($uploads_id);
         $uploadsQuery->delete();
 
         return response()->json([

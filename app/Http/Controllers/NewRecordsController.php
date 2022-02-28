@@ -13,6 +13,16 @@ use RealRashid\SweetAlert\Facades\Alert;
 class NewRecordsController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -45,9 +55,10 @@ class NewRecordsController extends Controller
         $recordQuery->fName = $request->input('inputFname');
         $recordQuery->mName = $request->input('inputMname');
         $recordQuery->lName = $request->input('inputLname');
-
+        //save first to create record ID to be referenced in Upload tbl
         $recordQuery->save();
 
+        //Upload file and get record ID to be stored in db for reference
         if ($request->hasfile('files')) {
             foreach ($request->file('files') as $key => $file) {
                 $path = $file->store('public/files');
@@ -61,9 +72,21 @@ class NewRecordsController extends Controller
                 $insert[$key]['filepath'] = $path;
                 $insert[$key]['for_record_id'] = $for_record_id;
             }
+            /**
+             * Validates file if has duplicate
+             * If true do not upload to db 
+             * Informs user that record was created
+             * Informs user that file was not uploaded
+             */
+            $validateFile = Uploads::where('filename', $name)->first();
+            if ($validateFile) {
+                alert()->info('Duplicate file not uploaded', ' Record Created!');
+                return back();
+                // return back()->Alert::warning('Warning Title', 'Warning Message');
+
+            }
             Uploads::insert($insert);
         }
-
 
         /** Check if has file then upload in dir of system */
         if ($request->hasfile('files')) {
