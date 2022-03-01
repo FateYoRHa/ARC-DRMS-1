@@ -138,7 +138,8 @@ class RecordsController extends Controller
             DB::table('uploads')->upsert($insert, ['filename' => $name, 'filepath' => $path, 'student_id_record' => $id_record], ['filename' => $name], ['filepath']);
         }
 
-        return back()->with('success', 'Updated successfully!');
+        alert()->success('Success','Updated successfully!');
+        return back();
     }
 
     /**

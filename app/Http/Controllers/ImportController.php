@@ -120,7 +120,8 @@ class ImportController extends Controller
         if (Records::exists()) {
             return Excel::download(new FileExport, 'records-collection.xlsx');
         } else {
-            return redirect()->back()->with('error', 'No records found');
+            alert()->error('No Records Found','0 Records Found');
+            return back();
         }
     }
 }

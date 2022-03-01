@@ -10,6 +10,7 @@ use App\Models\Uploads;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
+
 class NewRecordsController extends Controller
 {
     /**
@@ -97,7 +98,8 @@ class NewRecordsController extends Controller
             }
         }
 
-        return redirect('/newrecords')->with('success', 'Created successfully!');
+        alert()->success('Success','Created successfully!');
+        return redirect('/newrecords');
     }
 
     /**

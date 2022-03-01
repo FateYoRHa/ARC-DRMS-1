@@ -13,9 +13,9 @@
                     <label for="name" class="col-md-5 col-form-label text-md-end">{{ __('Name') }}</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="username" value="{{$userQuery->username}}" required autocomplete="name" autofocus disabled>
+                        <input id="name" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{$userQuery->username}}" required autocomplete="name" autofocus >
 
-                        @error('name')
+                        @error('username')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -27,7 +27,7 @@
                     <label for="email" class="col-md-5 col-form-label text-md-end">{{ __('Id Number') }}</label>
 
                     <div class="col-md-6">
-                        <input id="idNumber" type="text" class="form-control @error('idNumber') is-invalid @enderror" name="idNumber" value="{{$userQuery->idNumber}}" required autocomplete="idNumber" disabled>
+                        <input id="idNumber" type="text" class="form-control @error('idNumber') is-invalid @enderror" name="idNumber" value="{{$userQuery->idNumber}}" required autocomplete="idNumber" >
 
                         @error('idNumber')
                         <span class="invalid-feedback" role="alert">

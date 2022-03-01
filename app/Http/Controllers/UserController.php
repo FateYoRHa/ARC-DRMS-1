@@ -125,7 +125,9 @@ class UserController extends Controller
         $userQuery->password = Hash::make($passwords);
 
         $userQuery->save();
-        return redirect('/users')->with('success', 'Resetted successfully!');
+        alert()->success('Success','Resetted successfully!');
+        alert()->info('Password','Resetted to 0');
+        return redirect('/users');
     }
 
     /**
