@@ -14,22 +14,15 @@ use Illuminate\Support\Facades\View;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
 
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::post('file-import', [App\Http\Controllers\ImportController::class, 'fileImport'])->name('file-import');
-Route::get('file-export', [App\Http\Controllers\ImportController::class, 'fileExport'])->name('file-export');
-
-
-//DocumentViewer Library
-Route::any('ViewerJS/{all?}', function(){
-    return View::make('ViewerJS.index');
-});
+Route::get('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'index']);
+Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'store'])->name('change.password');
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
 
@@ -38,4 +31,12 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     Route::resource('import', App\Http\Controllers\ImportController::class);
     Route::resource('uploads', App\Http\Controllers\UploadsController::class);
     Route::resource('users', App\Http\Controllers\UserController::class);
+});
+
+Route::post('file-import', [App\Http\Controllers\ImportController::class, 'fileImport'])->name('file-import');
+Route::get('file-export', [App\Http\Controllers\ImportController::class, 'fileExport'])->name('file-export');
+
+//DocumentViewer Library
+Route::any('ViewerJS/{all?}', function(){
+    return View::make('ViewerJS.index');
 });

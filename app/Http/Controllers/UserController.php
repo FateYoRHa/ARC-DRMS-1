@@ -30,8 +30,6 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
-
         if ($request->ajax()) {
             $data = User::latest()->get();
 
@@ -126,7 +124,7 @@ class UserController extends Controller
 
         $userQuery->save();
         alert()->success('Success','Resetted successfully!');
-        alert()->info('Password','Resetted to 0');
+        alert()->info('Password','Resetted to 1');
         return redirect('/users');
     }
 

@@ -81,9 +81,8 @@ class NewRecordsController extends Controller
              */
             $validateFile = Uploads::where('filename', $name)->first();
             if ($validateFile) {
-                alert()->info('Duplicate file not uploaded', ' Record Created!');
+                alert()->warning('Record created without file', 'Duplicate File Found');
                 return back();
-                // return back()->Alert::warning('Warning Title', 'Warning Message');
 
             }
             Uploads::insert($insert);

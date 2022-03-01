@@ -7,6 +7,7 @@ use App\Http\Requests\StoreRecordsRequest;
 use App\Http\Requests\UpdateRecordsRequest;
 use App\Models\Uploads;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -37,9 +38,17 @@ class RecordsController extends Controller
                     return $row->fName . ' ' . $row->mName . ' ' . $row->lName;
                 })
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '
-                    <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span> Preview</a> 
-                    <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->record_id . ' "><span class="material-icons-outlined material-icons">delete</span> Delete</button>';
+                    $user = Auth::user()->username;
+                    if ($user == "Admin") {
+                        $actionBtn = ' <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span> Preview</a> 
+                        <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->record_id . ' "><span class="material-icons-outlined material-icons">delete</span> Delete</button>';
+                    } else if ($user == "Upload") {
+                        $actionBtn = ' <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span> Preview</a>';
+                    } else {
+                        $actionBtn = '';
+                    }
+
+
 
                     return $actionBtn;
                 })
@@ -97,7 +106,7 @@ class RecordsController extends Controller
     public function edit($record_id)
     {
         $recordQuery = Records::find($record_id);
-        
+
         //Join uploads table to retrieve data
         $uploadQuery = DB::table('records')
             ->join('uploads', 'id_number', '=', 'uploads.student_id_record')
@@ -138,7 +147,7 @@ class RecordsController extends Controller
             DB::table('uploads')->upsert($insert, ['filename' => $name, 'filepath' => $path, 'student_id_record' => $id_record], ['filename' => $name], ['filepath']);
         }
 
-        alert()->success('Success','Updated successfully!');
+        alert()->success('Success', 'Updated successfully!');
         return back();
     }
 
@@ -153,7 +162,7 @@ class RecordsController extends Controller
         $records_id = $record_id;
         $recordQuery = $records::find($records_id);
         $recordQuery->delete();
-        
+
         //Join table uploads to delete data in uploads
         $uploadQuery = DB::table('uploads')
             ->leftJoin('records', 'student_id_record', 'records.id_number')

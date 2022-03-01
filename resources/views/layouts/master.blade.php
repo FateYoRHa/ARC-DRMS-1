@@ -26,8 +26,6 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/media-query.css') }}" rel="stylesheet">
 
-
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -101,8 +99,9 @@
                     </div>
                     <div class="sidebar-heading"><img src="{{ asset('images/ubseal.png') }}" alt="ubseal"></div>
                     <div class="list-group-flush list-group-item-action bg-dark" id="user-display"> <span class="badge bg-danger">{{ Auth::user()->username }}</span></div>
-                    <a href="" class="btn" id="user-display-password">Change Password</a>
+                    <a href="{{ route('change.password') }}" class="btn" id="user-display-password">Change Password</a>
                     <div class="list-group list-group-flush">
+                        @if (Auth::user()->username == "Admin")
                         <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
                         <a href="{{ route('newrecords.index') }}" class="list-group-item list-group-item-action bg-dark">New Record <span class="material-icons-round material-icons-sidebar">post_add</span></a>
                         <a href="{{ route('import.index') }}" class="list-group-item list-group-item-action bg-dark">Import <span class="material-icons-outlined material-icons-sidebar">upload_file</span></a>
@@ -125,6 +124,9 @@
                                 </ul>
                             </div>
                         </div>
+                        @else
+                        <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
+                        @endif
                     </div>
 
 

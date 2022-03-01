@@ -80,19 +80,6 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- Create other page for viewing the files -->
-        <!-- <div class="col-md-12">
-            <div class="row">
-                @foreach ($uploadQuery as $file)
-                @if($recordQuery->id_number == $file->student_id_record)
-                <div class="col-md-6">
-                    <iframe src="/ViewerJS/#../uploads/{{$file->filename}}" width='500' height='400' allowfullscreen webkitallowfullscreen></iframe>
-                </div>
-                @endif
-                @endforeach
-            </div>
-        </div> -->
     </div>
 </div>
 <!-- /#page-content-wrapper -->

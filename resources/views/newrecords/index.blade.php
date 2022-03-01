@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@include('newrecords.newrecords_script')
 @section('content')
 
 <!-- Page Content -->
