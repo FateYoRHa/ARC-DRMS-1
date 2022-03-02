@@ -33,7 +33,11 @@
             <div class="col-md-10 row profile-details">
                 <div class="col">
                     <div class=" edit-record-btn">
+                        @if(Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2)
                         <a href="\records\{{$recordQuery->record_id}}\edit" class="edit-record btn btn-secondary py-0">Edit</a>
+                        @else
+
+                        @endif
                     </div>
                     <label for="idNumber" class="col-form-label-md primary-details-content">ID Number</label>
                     <p>{{$recordQuery->id_number}}</p>
@@ -54,7 +58,7 @@
                 @foreach ($uploadQuery as $file)
                 @if($recordQuery->id_number == $file->student_id_record)
                 <div class="col-md-6">
-                    <iframe src="/ViewerJS/#../uploads/{{$file->filename}}" width='500' height='400' allowfullscreen webkitallowfullscreen></iframe>
+                    <iframe src="/ViewerJS/#../uploads/{{$file->filename}}" id="iframe" width='500' height='400' allowfullscreen webkitallowfullscreen></iframe>
                 </div>
                 @endif
                 @endforeach
@@ -63,5 +67,15 @@
     </div>
 </div>
 <!-- /#page-content-wrapper -->
+<script>
+    var AuthUser = "{{{ (Auth::user()->is_admin) ? Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2 : 3 }}}";
+    if (AuthUser == 3) {
+        $('#iframe').ready(function() {
+            setTimeout(function() {
+                $('#iframe').contents().find('#download').remove();
+            }, 100);
+        });
 
+    }
+</script>
 @endsection

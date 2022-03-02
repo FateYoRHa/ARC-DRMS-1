@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::resource('records', App\Http\Controllers\RecordsController::class);
-   
+
 Route::get('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'index']);
 Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'store'])->name('change.password');
 
@@ -32,6 +32,8 @@ Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordControll
  */
 Route::group(['middleware' => 'adminUpload'], function () {
     Route::resource('uploads', App\Http\Controllers\UploadsController::class);
+    Route::get('records/{record}/edit', [App\Http\Controllers\RecordsController::class, 'edit']);
+    
 });
 
 /**
@@ -41,7 +43,7 @@ Route::group(['middleware' => 'adminUpload'], function () {
 Route::group(['middleware' => 'admin'], function () {
     Route::post('file-import', [App\Http\Controllers\ImportController::class, 'fileImport'])->name('file-import');
     Route::get('file-export', [App\Http\Controllers\ImportController::class, 'fileExport'])->name('file-export');
-
+    Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
     /**
      * Prevent-Back-History.
      * Prevents return to auth pages when logged out

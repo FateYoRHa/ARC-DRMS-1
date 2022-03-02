@@ -60,6 +60,9 @@ body {
     color: rgba(255, 255, 255, 0.788) !important;
     font-weight: lighter;
 }
+.dropdown{
+    margin-top: auto;
+}
 .dropdown .list-group-item-action {
     color: rgba(255, 255, 255, 0.788) !important;
     font-weight: lighter;
@@ -67,7 +70,13 @@ body {
 .dropdown-menu {
     padding: 0 !important;
     border: none !important;
+    width: 12rem;
 }
+
+.dropdown-menu li{
+    width: 12rem;
+}
+
 .list-group-item {
     padding: 0.25rem 1rem !important;
 }
@@ -138,7 +147,7 @@ body {
 
 /* alert */
 #error-alert { 
-    padding:0.25rem 0.875rem;
+    padding: 0.25rem 0.875rem;
 }
 
 /* custom show page */

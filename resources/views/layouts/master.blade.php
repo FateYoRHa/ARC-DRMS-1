@@ -36,9 +36,6 @@
                 <a class="navbar-brand" href="{{ url('#') }}">
                     {{ config('app.name', 'ARC DBMS') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -107,22 +104,19 @@
                         <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
                         <a href="{{ route('newrecords.index') }}" class="list-group-item list-group-item-action bg-dark">New Record <span class="material-icons-round material-icons-sidebar">post_add</span></a>
                         <a href="{{ route('import.index') }}" class="list-group-item list-group-item-action bg-dark">Import <span class="material-icons-outlined material-icons-sidebar">upload_file</span></a>
-                        <a href="#" class="list-group-item list-group-item-action bg-dark" hidden></a>
-
-                        <a href="#" class="list-group-item list-group-item-action bg-dark" hidden>Archive <span class="material-icons-outlined material-icons-sidebar">archive</span></a>
-
-                        <div class="list-group list-group-flush fixed-bottom">
+                        
+                        
+                        <div class="list-group list-group-flush">
                             <div class="dropdown">
-                                <a class="list-group-item list-group-item-action bg-dark" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="list-group-item list-group-item-action bg-dark " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                     Users <span class="material-icons-outlined material-icons-sidebar">
-                                        keyboard_arrow_up
+                                        keyboard_arrow_down
                                     </span>
                                 </a>
 
-                                <ul class="dropdown-menu list-group list-group-flush bg-dark" aria-labelledby="dropdownMenuLink">
+                                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
                                     <li><a class="list-group-item list-group-item-action bg-dark" href="{{ route('register') }}">Register</a></li>
                                     <li><a class="list-group-item list-group-item-action bg-dark" href="{{ route('users.index') }}"><span class="material-icons-outlined material-icons-sidebar">view_list</span> User List</a></li>
-
                                 </ul>
                             </div>
                         </div>
