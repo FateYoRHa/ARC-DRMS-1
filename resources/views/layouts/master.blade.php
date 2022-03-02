@@ -99,9 +99,11 @@
                     </div>
                     <div class="sidebar-heading"><img src="{{ asset('images/ubseal.png') }}" alt="ubseal"></div>
                     <div class="list-group-flush list-group-item-action bg-dark" id="user-display"> <span class="badge bg-danger">{{ Auth::user()->username }}</span></div>
+                    @if(Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2)
                     <a href="{{ route('change.password') }}" class="btn" id="user-display-password">Change Password</a>
+                    @endif
                     <div class="list-group list-group-flush">
-                        @if (Auth::user()->username == "Admin")
+                    @if (Auth::user()->is_admin == 1)
                         <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
                         <a href="{{ route('newrecords.index') }}" class="list-group-item list-group-item-action bg-dark">New Record <span class="material-icons-round material-icons-sidebar">post_add</span></a>
                         <a href="{{ route('import.index') }}" class="list-group-item list-group-item-action bg-dark">Import <span class="material-icons-outlined material-icons-sidebar">upload_file</span></a>

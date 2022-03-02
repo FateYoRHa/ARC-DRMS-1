@@ -21,22 +21,41 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::resource('records', App\Http\Controllers\RecordsController::class);
+   
 Route::get('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'index']);
 Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'store'])->name('change.password');
 
-Route::group(['middleware' => 'prevent-back-history'],function(){
-
-    Route::resource('records', App\Http\Controllers\RecordsController::class);
-    Route::resource('newrecords', App\Http\Controllers\NewRecordsController::class);
-    Route::resource('import', App\Http\Controllers\ImportController::class);
+/**
+ * Route adminUpload.
+ * Allows the admin and uploader to use the route
+ */
+Route::group(['middleware' => 'adminUpload'], function () {
     Route::resource('uploads', App\Http\Controllers\UploadsController::class);
-    Route::resource('users', App\Http\Controllers\UserController::class);
 });
 
-Route::post('file-import', [App\Http\Controllers\ImportController::class, 'fileImport'])->name('file-import');
-Route::get('file-export', [App\Http\Controllers\ImportController::class, 'fileExport'])->name('file-export');
+/**
+ * Route Group Admin.
+ * Restricts Pages for Admin
+ */
+Route::group(['middleware' => 'admin'], function () {
+    Route::post('file-import', [App\Http\Controllers\ImportController::class, 'fileImport'])->name('file-import');
+    Route::get('file-export', [App\Http\Controllers\ImportController::class, 'fileExport'])->name('file-export');
+
+    /**
+     * Prevent-Back-History.
+     * Prevents return to auth pages when logged out
+     */
+    Route::group(['middleware' => 'prevent-back-history'], function () {
+        Route::resource('newrecords', App\Http\Controllers\NewRecordsController::class);
+        Route::resource('import', App\Http\Controllers\ImportController::class);
+        Route::resource('users', App\Http\Controllers\UserController::class);
+    });
+});
+
+
 
 //DocumentViewer Library
-Route::any('ViewerJS/{all?}', function(){
+Route::any('ViewerJS/{all?}', function () {
     return View::make('ViewerJS.index');
 });

@@ -1,4 +1,5 @@
 <script>
+    //Delete uploaded File Edit page
     $(document).ready(function() {
         $.ajaxSetup({
             headers: {
@@ -39,4 +40,6 @@
             })
         });
     });
+
+    
 </script>

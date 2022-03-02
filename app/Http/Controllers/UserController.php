@@ -39,11 +39,16 @@ class UserController extends Controller
                     $user = Auth::user();
                     if ($user == $row) {
                         $actionBtn = '';
-                    } else if ($user != "Admin") {
+                    } else if ($user != $row) {
+                        $actionBtn = '
+                        <a href="/users/' . $row->user_id . '/edit" class="edit btn btn-secondary btn-sm" title="Reset Password"><span class="material-icons-outlined material-icons">restart_alt</span> Reset Password</a> 
+                        <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->user_id . ' "><span class="material-icons-outlined material-icons">delete</span> Delete</button>';
+                    } else if ($user->isadmin != 1) {
                         $actionBtn = '
                         <a href="/users/' . $row->user_id . '/edit" class="edit btn btn-secondary btn-sm" title="Reset Password"><span class="material-icons-outlined material-icons">restart_alt</span> Reset Password</a> 
                         <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->user_id . ' "><span class="material-icons-outlined material-icons">delete</span> Delete</button>';
                     }
+                    
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])

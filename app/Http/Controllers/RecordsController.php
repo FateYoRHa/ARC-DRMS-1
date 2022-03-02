@@ -38,11 +38,11 @@ class RecordsController extends Controller
                     return $row->fName . ' ' . $row->mName . ' ' . $row->lName;
                 })
                 ->addColumn('action', function ($row) {
-                    $user = Auth::user()->username;
-                    if ($user == "Admin") {
+                    $user = Auth::user();
+                    if ($user->is_admin == 1) {
                         $actionBtn = ' <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span> Preview</a> 
                         <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->record_id . ' "><span class="material-icons-outlined material-icons">delete</span> Delete</button>';
-                    } else if ($user == "Upload") {
+                    } else if ($user->is_admin != 1) {
                         $actionBtn = ' <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span> Preview</a>';
                     } else {
                         $actionBtn = '';
@@ -55,6 +55,7 @@ class RecordsController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+
         return view('records.index');
     }
 
@@ -136,18 +137,40 @@ class RecordsController extends Controller
             foreach ($request->file('files') as $key => $file) {
                 $path = $file->store('public/files');
                 $name = $file->getClientOriginalName();
+
                 $id_record = $request->input('id_number');
                 $for_record_id = $recordQuery->record_id;
+
+                $insert[$key]['student_id_record'] = $id_record;
                 $insert[$key]['filename'] = $name;
                 $insert[$key]['filepath'] = $path;
-                $insert[$key]['student_id_record'] = $id_record;
                 $insert[$key]['for_record_id'] = $for_record_id;
+            }
+            /**
+             * Validates file if has duplicate
+             * If true do not upload to db 
+             * Informs user that record was created
+             * Informs user that file was not uploaded
+             */
+            $validateFile = Uploads::where('filename', $name)->first();
+            if ($validateFile) {
+                alert()->warning('Record updated without file', 'Duplicate File Found');
+                return back();
             }
             //upsert update current record except unique filename
             DB::table('uploads')->upsert($insert, ['filename' => $name, 'filepath' => $path, 'student_id_record' => $id_record], ['filename' => $name], ['filepath']);
         }
 
-        alert()->success('Success', 'Updated successfully!');
+        /** Check if has file then upload in dir of system */
+        if ($request->hasfile('files')) {
+            foreach ($request->file('files') as $file) {
+                $name = $file->getClientOriginalName();
+                $file->move(public_path() . '/uploads/', $name);
+                $data[] = $name;
+            }
+        }
+
+        alert()->success('Success', 'Record and File Updated Successfully!');
         return back();
     }
 
