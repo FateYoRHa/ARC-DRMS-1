@@ -14,7 +14,7 @@ class CreateRecordsTable extends Migration
     public function up()
     {
         Schema::create('records', function (Blueprint $table) {
-            $table->id('record_id');
+            $table->id('record_id')->unique();
             $table->integer('id_number')->unique();
             $table->string('fName');
             $table->string('mName');

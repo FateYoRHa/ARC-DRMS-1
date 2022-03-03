@@ -4,10 +4,6 @@
 <div id="page-content-wrapper">
 
     <div class="container-fluid">
-        <div class="sidebar-button">
-            <button class="btn btn-outline" id="menu-toggle"><span class="material-icons-round material-icons-toggle">more_vert</span></button>
-        </div>
-
         <div class="page-content-title">
             <h2>User List</h2>
         </div>

@@ -23,7 +23,6 @@ body {
     display: block;
     margin: auto;
 }
-
 #sidebar-wrapper #user-display { 
     text-align: center;
 }
@@ -41,7 +40,12 @@ body {
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-
+}
+.sidebar-button button{
+    color: white;
+}
+.sidebar-button button:hover{
+    color: rgb(201, 201, 201);
 }
 #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
@@ -49,6 +53,11 @@ body {
 }
 #sidebar-wrapper .list-group {
     width: 12rem;
+}
+#sidebar-wrapper .list-group #sidebar-hr{
+    background-color: #b4b4b4!important;
+    margin: 0;
+    border-top: 3px solid rgba(0,0,0,.1)
 }
 #page-content-wrapper {
     min-width: 90vw;
@@ -72,7 +81,6 @@ body {
     border: none !important;
     width: 12rem;
 }
-
 .dropdown-menu li{
     width: 12rem;
 }
