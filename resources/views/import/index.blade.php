@@ -2,6 +2,7 @@
 
 @section('content')
 
+@include('import.index_script')
 <!-- Page Content -->
 <div id="page-content-wrapper">
 
@@ -12,7 +13,7 @@
         <hr />
         <div class="import-content">
             <p>Import files with the extension names(.xlsx, ..........., )</p>
-            <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('file-import') }}" method="POST" id="formImport" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group mb-4">
                     <div class="custom-file">
@@ -25,7 +26,7 @@
                         @enderror
                     </div>
                 </div>
-                <button class="btn btn-primary">Import data</button>
+                <input type="button" class="btn btn-primary" onclick="importFunction()" value="Import Data">
                 <a class="btn btn-success" href="{{ route('file-export') }}">Export data</a>
             </form>
         </div>

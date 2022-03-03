@@ -33,7 +33,7 @@ class StoreNewRecordsRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_number' => 'required|unique:records',
+            'id_number' => 'required|unique:records|min:5|max:8',
             'inputFname' => 'required',
             'inputMname' => 'required',
             'inputLname' => 'required',

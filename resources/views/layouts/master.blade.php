@@ -37,7 +37,7 @@
                     {{ config('app.name', 'ARC DBMS') }}
                 </a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                     </ul>
@@ -45,7 +45,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <div class="sidebar-button">
-                            <button class="btn btn-outline" id="menu-toggle"><span class="material-icons-round material-icons-toggle">more_vert</span></button>
+                            <button class="btn btn-light" id="menu-toggle"><span class="material-icons-round material-icons-toggle">more_vert</span></button>
                         </div>
                         <!-- Authentication Links -->
                         <!-- @guest

@@ -41,9 +41,6 @@ body {
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
 }
-.sidebar-button button{
-    color: white;
-}
 .sidebar-button button:hover{
     color: rgb(201, 201, 201);
 }
@@ -60,7 +57,7 @@ body {
     border-top: 3px solid rgba(0,0,0,.1)
 }
 #page-content-wrapper {
-    min-width: 90vw;
+    min-width: 98vw;
 }
 #wrapper.toggled #sidebar-wrapper {
     margin-left: 0;
@@ -84,7 +81,6 @@ body {
 .dropdown-menu li{
     width: 12rem;
 }
-
 .list-group-item {
     padding: 0.25rem 1rem !important;
 }

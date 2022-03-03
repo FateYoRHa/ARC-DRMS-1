@@ -107,7 +107,14 @@ class ImportController extends Controller
      */
     public function fileImport(StoreImportRequest $request)
     {
-        Excel::import(new ImportFile, $request->file('file')->store('temp'));
+        try {
+            Excel::import(new ImportFile, $request->file('file')->store('temp'));
+        } catch (\Exception $ex) {
+            alert()->error('Error', 'Try Checking Format');
+            return back();
+        }
+
+        alert()->success('Success', 'Records Updated');
         return back();
     }
 
@@ -120,7 +127,7 @@ class ImportController extends Controller
         if (Records::exists()) {
             return Excel::download(new FileExport, 'records-collection.xlsx');
         } else {
-            alert()->error('No Records Found','0 Records Found');
+            alert()->error('No Records Found', '0 Records Found');
             return back();
         }
     }
