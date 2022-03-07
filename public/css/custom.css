@@ -1,6 +1,6 @@
 body {
-    overflow-x: hidden;
-    min-height:100%
+    min-height:100%;
+    overflow-x: auto;
 }
 
 /* custom nav */
@@ -34,7 +34,7 @@ body {
     padding: 0em 0.75rem !important;
 }
 #sidebar-wrapper {
-    min-height:100vh;
+    min-height: 100vw;
     margin-left: -12rem;
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
@@ -81,6 +81,9 @@ body {
 .dropdown-menu li{
     width: 12rem;
 }
+.dropdown-menu {
+    box-shadow: 1px 1px 2px 1px #808080;
+}
 .list-group-item {
     padding: 0.25rem 1rem !important;
 }
@@ -90,11 +93,12 @@ body {
     background-image: url();
 }
 
-.login-card { 
-    padding: 0.8rem;
+.login-card {
+    padding: 1.8rem;
     border: solid 1px;
     border-radius: 12px;
     background-color: #eeeeeed2;
+    box-shadow: 5px 5px 10px 1px #9b9b9bd2;
 }
 .login-img img{
     padding: 0.8rem;
@@ -160,11 +164,12 @@ body {
     display: block;
     border-radius: 8px;
     margin:auto;
+    box-shadow: 3px 2px #888888;
 }
 .primary-details, .profile-img {
     margin-bottom: 1rem;
 }
-.profile-img img, .profile-details {
+.profile-details {
     padding: 10px;
     box-shadow: 3px 2px #888888;
 }

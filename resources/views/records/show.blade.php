@@ -6,9 +6,6 @@
 <div id="page-content-wrapper">
 
     <div class="container-fluid">
-        <div class="sidebar-button">
-            <button class="btn btn-outline" id="menu-toggle"><span class="material-icons-round material-icons-toggle">more_vert</span></button>
-        </div>
         <div class="page-content-title">
             <h2>Record</h2>
         </div>
@@ -34,7 +31,7 @@
                 <div class="col">
                     <div class=" edit-record-btn">
                         @if(Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2)
-                        <a href="\records\{{$recordQuery->record_id}}\edit" class="edit-record btn btn-secondary py-0">Edit</a>
+                        <a href="\records\{{$recordQuery->record_id}}\edit" class="edit-record btn btn-secondary py-0"><span class="material-icons-outlined material-icons">edit_note</span>Edit</a>
                         @else
 
                         @endif

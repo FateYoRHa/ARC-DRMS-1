@@ -15,7 +15,7 @@
                         <!-- <label for="email" class="col-md-4 col-form-label login-details">{{ __('Id Number') }}</label> -->
                         <div class="row mb-3">
                             <div class="col">
-                                <input id="idNumber" type="text" class="form-control @error('idNumber') is-invalid @enderror login-details" name="idNumber" placeholder="Id Number" value="{{ old('idNumber') }}" required autocomplete="idNumber" autofocus>
+                                <input id="idNumber" type="text" class="form-control @error('idNumber') is-invalid @enderror login-details" name="idNumber" placeholder="ID number" value="{{ old('idNumber') }}" required autocomplete="idNumber" autofocus>
 
                                 @error('idNumber')
                                 <span class="invalid-feedback" role="alert">

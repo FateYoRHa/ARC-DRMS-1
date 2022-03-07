@@ -10,8 +10,8 @@
             <h2>Records</h2>
         </div>
         <hr />
-
-        <table class="table table-striped display datatable nowrap" id="datatable-record">
+    
+        <table class="table table-striped display datatable nowrap " id="datatable-record">
             <thead>
                 <tr>
                     <th>Record ID</th>
