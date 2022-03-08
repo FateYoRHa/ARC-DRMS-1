@@ -6,6 +6,7 @@
             serverSide: true,
             responsive: true,
             autofill: true,
+            deferRender: true,
             ajax: "{{ route('records.index') }}",
             columns: [{
                     data: 'record_id',
@@ -22,7 +23,7 @@
                     data: 'name',
                     name: 'name',
                     searchable: false,
-                    sortable: true,
+                    sortable: false,
                     visible: true
                 },
                 {
@@ -61,6 +62,7 @@
                 visible: true,
                 searchable: false
             }],
+            order: [[ 3, "asc" ]]
             
         });
 

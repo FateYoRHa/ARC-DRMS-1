@@ -52,52 +52,55 @@ class NewRecordsController extends Controller
     public function store(StoreNewRecordsRequest $request)
     {
         $recordQuery = new NewRecords();
-        $recordQuery->id_number = $request->input('id_number');
-        $recordQuery->fName = $request->input('inputFname');
-        $recordQuery->mName = $request->input('inputMname');
-        $recordQuery->lName = $request->input('inputLname');
-        //save first to create record ID to be referenced in Upload tbl
-        $recordQuery->save();
+        try {
+            //Upload file and get record ID to be stored in db for reference
+            if ($request->hasfile('files')) {
+                foreach ($request->file('files') as $key => $file) {
+                    $path = $file->store('public/files');
+                    $name = $file->getClientOriginalName();
 
-        //Upload file and get record ID to be stored in db for reference
-        if ($request->hasfile('files')) {
-            foreach ($request->file('files') as $key => $file) {
-                $path = $file->store('public/files');
-                $name = $file->getClientOriginalName();
+                    $student_id_record = $request->input('id_number');
+                    $for_record_id = $recordQuery->record_id;
 
-                $student_id_record = $request->input('id_number');
-                $for_record_id = $recordQuery->record_id;
-
-                $insert[$key]['student_id_record'] = $student_id_record;
-                $insert[$key]['filename'] = $name;
-                $insert[$key]['filepath'] = $path;
-                $insert[$key]['for_record_id'] = $for_record_id;
+                    $insert[$key]['student_id_record'] = $student_id_record;
+                    $insert[$key]['filename'] = $name;
+                    $insert[$key]['filepath'] = $path;
+                    $insert[$key]['for_record_id'] = $for_record_id;
+                }
+                /**
+                 * Validates file if has duplicate
+                 * If true do not upload to db 
+                 * Informs user that record was created
+                 * Informs user that file was not uploaded
+                 */
+                $validateFile = Uploads::where('filename', $name)->first();
+                if ($validateFile) {
+                    alert()->warning('Record created without file', 'Duplicate File Found');
+                    return back();
+                }
+                Uploads::insert($insert);
             }
-            /**
-             * Validates file if has duplicate
-             * If true do not upload to db 
-             * Informs user that record was created
-             * Informs user that file was not uploaded
-             */
-            $validateFile = Uploads::where('filename', $name)->first();
-            if ($validateFile) {
-                alert()->warning('Record created without file', 'Duplicate File Found');
-                return back();
 
+            /** Check if has file then upload in dir of system */
+            if ($request->hasfile('files')) {
+                foreach ($request->file('files') as $file) {
+                    $name = $file->getClientOriginalName();
+                    $file->move(public_path() . '/uploads/', $name);
+                    $data[] = $name;
+                }
             }
-            Uploads::insert($insert);
+        } catch (\Exception $e) {
+            alert()->error('Error', 'Something Went Wrong');
+        } finally {
+            $recordQuery->id_number = $request->input('id_number');
+            $recordQuery->fName = $request->input('inputFname');
+            $recordQuery->mName = $request->input('inputMname');
+            $recordQuery->lName = $request->input('inputLname');
+            //save first to create record ID to be referenced in Upload tbl
+            $recordQuery->save();
         }
 
-        /** Check if has file then upload in dir of system */
-        if ($request->hasfile('files')) {
-            foreach ($request->file('files') as $file) {
-                $name = $file->getClientOriginalName();
-                $file->move(public_path() . '/uploads/', $name);
-                $data[] = $name;
-            }
-        }
-
-        alert()->success('Success','Created successfully!');
+        alert()->success('Success', 'Created successfully!');
         return redirect('/newrecords');
     }
 

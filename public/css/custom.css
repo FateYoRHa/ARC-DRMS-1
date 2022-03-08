@@ -34,7 +34,7 @@ body {
     padding: 0em 0.75rem !important;
 }
 #sidebar-wrapper {
-    min-height: 100vw;
+    min-height: 50vw;
     margin-left: -12rem;
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
@@ -77,12 +77,11 @@ body {
     padding: 0 !important;
     border: none !important;
     width: 12rem;
+    box-shadow: -2px 2px 8px 1px #000000;
+    /* margin: 1px !important;  */
 }
 .dropdown-menu li{
     width: 12rem;
-}
-.dropdown-menu {
-    box-shadow: 1px 1px 2px 1px #808080;
 }
 .list-group-item {
     padding: 0.25rem 1rem !important;
