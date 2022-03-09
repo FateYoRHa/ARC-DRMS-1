@@ -30,30 +30,34 @@ class RecordsController extends Controller
      */
     public function index(Request $request)
     {
-        //datatable query for retrieving data rows in db
-        if ($request->ajax()) {
-            // $data = Records::latest()->get();
-            $data = Records::query();
-            return DataTables::of($data)
-                ->addColumn('name', function ($row) {
-                    return $row->fName . ' ' . $row->mName . ' ' . $row->lName;
-                })
-                ->addColumn('action', function ($row) {
-                    $user = Auth::user();
-                    if ($user->is_admin == 1) {
-                        $actionBtn = ' <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span> Preview</a> 
+        try {
+            //datatable query for retrieving data rows in db
+            if ($request->ajax()) {
+                // $data = Records::latest()->get();
+                $data = Records::query();
+                return DataTables::of($data)
+                    ->addColumn('name', function ($row) {
+                        return $row->fName . ' ' . $row->mName . ' ' . $row->lName;
+                    })
+                    ->addColumn('action', function ($row) {
+                        $user = Auth::user();
+                        if ($user->is_admin == 1) {
+                            $actionBtn = ' <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span> Preview</a> 
                         <button type="button" id="btnDelete" class="delete btn btn-outline-danger btn-sm" data-id=" ' . $row->record_id . ' "><span class="material-icons-outlined material-icons">delete</span> Delete</button>';
-                    } else if ($user->is_admin != 1) {
-                        $actionBtn = ' <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span> Preview</a>';
-                    } else {
-                        $actionBtn = '';
-                    }
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+                        } else if ($user->is_admin != 1) {
+                            $actionBtn = ' <a href="/records/' . $row->record_id . '" class="edit btn btn-warning btn-sm" title="View Record"><span class="material-icons-outlined material-icons">preview</span> Preview</a>';
+                        } else {
+                            $actionBtn = '';
+                        }
+                        return $actionBtn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+            }
+        } catch (\Exception $e) {
+            alert()->error('Error', 'Error Retrieving Data');
         }
-
+        
         return view('records.index');
     }
 
@@ -125,8 +129,6 @@ class RecordsController extends Controller
     {
         $recordQuery = Records::find($record_id);
         try {
-
-
             //check if has upload file then puts in array in foreach
             if ($request->hasfile('files')) {
                 foreach ($request->file('files') as $key => $file) {
@@ -173,9 +175,6 @@ class RecordsController extends Controller
             $recordQuery->lName = $request->input('inputLname');
             $recordQuery->save();
         }
-
-
-
         alert()->success('Success', 'Record and File Updated Successfully!');
         return back();
     }
@@ -189,14 +188,18 @@ class RecordsController extends Controller
     public function destroy(Records $records, $record_id)
     {
         $records_id = $record_id;
-        $recordQuery = $records::find($records_id);
-        $recordQuery->delete();
+        try {
+            $recordQuery = $records::find($records_id);
+            $recordQuery->delete();
 
-        //Join table uploads to delete data in uploads
-        $uploadQuery = DB::table('uploads')
-            ->leftJoin('records', 'student_id_record', 'records.id_number')
-            ->where('for_record_id', $record_id);
-        $uploadQuery->delete();
+            //Join table uploads to delete data in uploads
+            $uploadQuery = DB::table('uploads')
+                ->leftJoin('records', 'student_id_record', 'records.id_number')
+                ->where('for_record_id', $record_id);
+            $uploadQuery->delete();
+        } catch (\Exception $e) {
+            alert()->error('Error', 'Something Went Wrong');
+        }
 
         return response()->json([
             'message' => 'Data deleted successfully!'

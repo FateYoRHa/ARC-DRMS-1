@@ -93,8 +93,12 @@ class UploadsController extends Controller
     public function destroy(Uploads $uploads, Request $request, $upload_id)
     {
         $uploads_id = $upload_id;
-        $uploadsQuery = $uploads::find($uploads_id);
-        $uploadsQuery->delete();
+        try {
+            $uploadsQuery = $uploads::find($uploads_id);
+            $uploadsQuery->delete();    
+        } catch (\Exception $e) {
+            alert()->error('Error', 'Something Went Wrong');
+        }
 
         return response()->json([
             'message' => 'Data deleted successfully!'

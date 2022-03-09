@@ -54,7 +54,6 @@
                     searchable: false
                 },
             ],
-            scrollY: '55vh',
             scrollX: true,
             scrollCollapse: true,
             columnDefs: [{
