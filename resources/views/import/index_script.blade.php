@@ -1,7 +1,7 @@
 <script>
     function importFunction() {
         Swal.fire({
-            title: 'Are you sure?',
+            title: 'Import file?',
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
@@ -12,6 +12,17 @@
             if (result.isConfirmed) {
                 document.getElementById("formImport").submit();
             }
+        })
+    }
+
+    function exportFunction() {
+        Swal.fire({
+            position: 'top-middle',
+            icon: 'success',
+            title: 'Download will start soon',
+            showConfirmButton: false,
+            timer: 3000,
+            toast: true
         })
     }
 </script>
