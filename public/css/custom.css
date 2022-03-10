@@ -54,8 +54,8 @@ body {
 #sidebar-wrapper .list-group #sidebar-hr{
     background-color: #b4b4b4!important;
     margin: 0;
-    border-top: 3px solid rgba(0,0,0,.1)
-}
+    border-top: 3px solid rgba(0,0,0,.1);
+} 
 #page-content-wrapper {
     min-width: 98vw;
 }
