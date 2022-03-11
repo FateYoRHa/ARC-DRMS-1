@@ -17,8 +17,10 @@ class CreateRecordsTable extends Migration
             $table->id('record_id')->unique();
             $table->integer('id_number')->unique();
             $table->string('fName');
-            $table->string('mName');
-            $table->string('lName');
+            $table->string('mName')->nullable();
+            $table->string('lName')->nullable();
+            $table->string('course')->nullable();
+
             $table->timestamps();
         });
     }

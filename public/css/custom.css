@@ -1,6 +1,5 @@
 body {
     min-height:100%;
-    overflow-x: auto;
 }
 
 /* custom nav */
@@ -113,7 +112,7 @@ body {
 }
 
 /* page-content-wrapper */
-.new-record-submit {
+.new-record-submit, .importDataBtn {
     float: right;
 }
 .record-search { 

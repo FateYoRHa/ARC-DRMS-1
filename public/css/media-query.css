@@ -23,16 +23,16 @@
         height: 100%;
     }
     #page-content-wrapper {
-        min-width: 80vw;
+        min-width: 83vw;
         width: 100%;
     }
     #wrapper.toggled #sidebar-wrapper {
         margin-left: -12rem;
         min-height: 100%;
     }
-    body {
+    /* body {
         overflow-x: visible !important;
-    }
+    } */
 }
 
 /* @media (min-width: 768px) {

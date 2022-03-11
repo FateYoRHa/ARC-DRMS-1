@@ -13,11 +13,11 @@ class FileExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return Import::select('id_number', 'fName', 'mName', 'lName')->get();
+        return Import::select('id_number', 'fName', 'mName', 'lName', 'course')->get();
     }
 
     public function headings(): array
     {
-        return ['ID NUMBER', 'First Name', 'Middle Name', 'Last Name'];
+        return ['ID NUMBER', 'First Name', 'Middle Name', 'Last Name', 'Course'];
     }
 }

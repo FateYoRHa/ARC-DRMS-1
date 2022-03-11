@@ -11,6 +11,22 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 document.getElementById("formImport").submit();
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-middle',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Upload will start soon',
+                    text: "You'll be notified after upload",
+                })
             }
         })
     }

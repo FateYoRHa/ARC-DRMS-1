@@ -48,6 +48,13 @@
                     visible: false
                 },
                 {
+                    data: 'course',
+                    name: 'course',
+                    searchable: true,
+                    sortable: true,
+                    visible: true
+                },
+                {
                     data: 'action',
                     name: 'action',
                     orderable: false,
@@ -55,14 +62,22 @@
                 },
             ],
             scrollX: true,
+            scrollY: '55vh',
             scrollCollapse: true,
             columnDefs: [{
-                targets: 0,
-                visible: true,
-                searchable: false
-            }],
-            order: [[ 3, "asc" ]]
-            
+                    targets: 0,
+                    visible: true,
+                    searchable: false
+                },
+                {
+                    width: 100,
+                    targets: 1
+                },
+            ],
+            order: [
+                [5, "asc"]
+            ]
+
         });
 
     });

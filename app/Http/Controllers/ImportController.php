@@ -109,8 +109,8 @@ class ImportController extends Controller
     {
         try {
             Excel::import(new ImportFile, $request->file('file')->store('temp'));
-        } catch (\Exception $ex) {
-            alert()->error('Error', 'Try Checking Format');
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            alert()->error('Error', 'Something Went Wrong');
             return back();
         }
 

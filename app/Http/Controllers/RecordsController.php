@@ -37,7 +37,7 @@ class RecordsController extends Controller
                 $data = Records::query();
                 return DataTables::of($data)
                     ->addColumn('name', function ($row) {
-                        return $row->fName . ' ' . $row->mName . ' ' . $row->lName;
+                        return $row->lName . ' , ' . $row->fName . ' ' . $row->mName;
                     })
                     ->addColumn('action', function ($row) {
                         $user = Auth::user();

@@ -18,6 +18,7 @@ class RecordsFactory extends Factory
             'fName' => $this->faker->firstname(),
             'mName' => $this->faker->randomElement(['Jon', 'Sur', 'Mer', 'Pol', 'Her', 'Hur', 'Bur']),
             'lName' => $this->faker->lastname(),
+            'course' => $this->faker->sentence(),
         ];
     }
 }

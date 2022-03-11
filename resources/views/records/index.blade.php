@@ -10,24 +10,27 @@
             <h2>Records</h2>
         </div>
         <hr />
-    
-        <table class="table table-striped display datatable nowrap " id="datatable-record">
-            <thead>
-                <tr>
-                    <th>Record ID</th>
-                    <th>Id Number</th>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="">
+            <table class="table table-striped datatable responsive" id="datatable-record">
+                <thead>
+                    <tr>
+                        <th>Record ID</th>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Name</th>
+                        <th>Name</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
         <!-- include script here for datatable entries -->
-        @include('records.index_script') 
+        @include('records.index_script')
     </div>
 </div>
 

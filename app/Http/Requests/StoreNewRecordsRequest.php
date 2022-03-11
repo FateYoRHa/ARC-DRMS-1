@@ -33,10 +33,10 @@ class StoreNewRecordsRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_number' => 'required|unique:records|min:5|max:8',
+            'id_number' => 'required|unique:records|min:5|max:10',
             'inputFname' => 'required',
-            'inputMname' => 'required',
-            'inputLname' => 'required',
+            // 'inputMname' => 'required',
+            // 'inputLname' => 'required',
             'files' => 'nullable',
             'files.*' => 'mimes:pdf'
         ];
@@ -47,8 +47,8 @@ class StoreNewRecordsRequest extends FormRequest
             'id_number.required' => 'ID Number is Required',
             'id_number.unique' => 'ID Number must be unique',
             'inputFname.required' => 'First Name is required',
-            'inputMname.required' => 'Middle Name is required',
-            'inputLname.required' => 'Last Name is required',
+            // 'inputMname.required' => 'Middle Name is required',
+            // 'inputLname.required' => 'Last Name is required',
             'files.*.mimes' => 'File must be a PDF'
         ];
     }
