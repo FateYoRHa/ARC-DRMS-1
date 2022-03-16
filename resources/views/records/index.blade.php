@@ -7,7 +7,7 @@
 
     <div class="container-fluid">
         <div class="page-content-title">
-            <h2>Records</h2>
+            <h2> Records</h2>
         </div>
         <hr />
         <div class="">

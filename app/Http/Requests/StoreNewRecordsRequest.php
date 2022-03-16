@@ -44,8 +44,8 @@ class StoreNewRecordsRequest extends FormRequest
     public function messages()
     {
         return [
-            'id_number.required' => 'ID Number is Required',
-            'id_number.unique' => 'ID Number must be unique',
+            'id_number.required' => 'ID number is required',
+            'id_number.unique' => 'ID number is already taken',
             'inputFname.required' => 'First Name is required',
             // 'inputMname.required' => 'Middle Name is required',
             // 'inputLname.required' => 'Last Name is required',

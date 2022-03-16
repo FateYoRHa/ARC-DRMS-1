@@ -36,10 +36,26 @@
 
                         @endif
                     </div>
-                    <label for="idNumber" class="col-form-label-md primary-details-content">ID Number</label>
-                    <p>{{$recordQuery->id_number}}</p>
-                    <label for="name" class="col-form-label-md primary-details-content">Name</label>
-                    <p>{{$recordQuery->fName}} {{$recordQuery->mName}} {{$recordQuery->lName}}</p>
+                    <table class="table table-sm table-borderless">
+
+                        <tbody>
+                            <tr>
+                                <td> <label for="idNumber" class="col-form-label-md primary-details-content">ID Number</label> </td>
+                                <td> <label for="name" class="col-form-label-md primary-details-content">Name</label> </td>
+                            </tr>
+                            <tr>
+                                <td> <p>{{$recordQuery->id_number}}</p> </td>
+                                <td> <p>{{$recordQuery->fName}} {{$recordQuery->mName}} {{$recordQuery->lName}}</p> </td>
+                            </tr>
+                            
+                            <tr>
+                                <td> <label for="course" class="col-form-label-md primary-details-content">Course</label> </td>
+                            </tr>
+                            <tr>
+                                <td> <p>{{$recordQuery->course}}</p> </td>
+                            </tr>
+                        </tbody>
+                    </table> 
                 </div>
 
             </div>
