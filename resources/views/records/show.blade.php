@@ -36,7 +36,7 @@
 
                         @endif
                     </div>
-                    <table class="table table-sm table-borderless">
+                    <table class="table table-sm table-borderless" id="table-show-record">
 
                         <tbody>
                             <tr>
@@ -52,7 +52,7 @@
                                 <td> <label for="course" class="col-form-label-md primary-details-content">Course</label> </td>
                             </tr>
                             <tr>
-                                <td> <p>{{$recordQuery->course}}</p> </td>
+                                <td colspan="2"> <p>{{$recordQuery->course}}</p> </td>
                             </tr>
                         </tbody>
                     </table> 

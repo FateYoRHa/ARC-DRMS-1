@@ -182,3 +182,8 @@ body {
 .edit-record{
  float: right;
 }
+
+/* custom table */
+.profile-details #table-show-record td{
+    padding: 0 !important;
+}
