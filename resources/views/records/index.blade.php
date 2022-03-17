@@ -16,7 +16,7 @@
                     <tr>
                         <th>Record ID</th>
                         <th>Student ID</th>
-                        <th>Name</th>
+                        <th>Name (Last, First Middle)</th>
                         <th>Name</th>
                         <th>Name</th>
                         <th>Name</th>

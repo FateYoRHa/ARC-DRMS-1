@@ -38,7 +38,7 @@
                 <label for="inputLname" class="form-label col-form-label-sm">Last Name</label>
                 <input type="text" class="form-control form-control-sm" id="inputLname" name="inputLname" value="{{ old('inputLname') }}" required>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <label for="upload-file-new" class="upload-file-new">Import File<span class="material-icons-outlined material-icons-newrecord">upload</span></label>
                 <input type="file" class="form-control-file" id="files" name="files[]" multiple>
             </div>
