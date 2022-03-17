@@ -68,13 +68,13 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Accounts
 
 Admin:
-2000
-admin2000
+- 2000
+- admin2000
 
 Uploader: 
-2001
-upload2001
+- 2001
+- upload2001
 
 Viewer
-2002
-view2002
+- 2002
+- view2002
