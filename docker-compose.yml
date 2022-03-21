@@ -7,7 +7,7 @@ services:
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: UB/ARC 
+        image: ub/arc 
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
