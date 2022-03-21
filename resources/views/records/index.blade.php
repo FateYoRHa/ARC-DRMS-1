@@ -10,17 +10,17 @@
             <h2> Records</h2>
         </div>
         <hr />
-        <div class="">
-            <table class="table table-striped datatable responsive" id="datatable-record">
+        <div class="table-responsive">
+            <table class="datatable display compact" id="datatable-record">
                 <thead>
                     <tr>
                         <th>Record ID</th>
                         <th>Student ID</th>
-                        <th>Name (Last, First Middle)</th>
+                        <th class="col-sm-4">Name (Last, First Middle)</th>
                         <th>Name</th>
                         <th>Name</th>
                         <th>Name</th>
-                        <th>Course</th>
+                        <th class="col-sm-4">Course</th>
                         <th>Action</th>
                     </tr>
                 </thead>

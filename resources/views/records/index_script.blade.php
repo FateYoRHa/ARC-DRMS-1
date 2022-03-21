@@ -68,11 +68,7 @@
                     targets: 0,
                     visible: true,
                     searchable: false
-                },
-                {
-                    width: 100,
-                    targets: 1
-                },
+                }
             ],
             order: [
                 [5, "asc"]

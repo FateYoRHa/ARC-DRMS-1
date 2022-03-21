@@ -1,5 +1,5 @@
 body {
-    min-height:100%;
+    overflow-x: hidden;
 }
 
 /* custom nav */
@@ -33,7 +33,7 @@ body {
     padding: 0em 0.75rem !important;
 }
 #sidebar-wrapper {
-    min-height: 50vw;
+    min-height: 100vh;
     margin-left: -12rem;
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;

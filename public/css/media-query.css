@@ -20,19 +20,18 @@
 @media (min-width: 768px) {
     #sidebar-wrapper {
         margin-left: 0;
-        height: 100%;
     }
     #page-content-wrapper {
-        min-width: 83vw;
+        min-width: 0;
         width: 100%;
     }
     #wrapper.toggled #sidebar-wrapper {
         margin-left: -12rem;
-        min-height: 100%;
     }
-    /* body {
-        overflow-x: visible !important;
-    } */
+    #wrapper.toggled #page-content-wrapper {
+        width: 99vw;
+    }
+
 }
 
 /* @media (min-width: 768px) {
