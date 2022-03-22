@@ -96,7 +96,7 @@
                     <tr>
                         @if($recordQuery->id_number == $file->student_id_record)
                         <td>
-                            <a href='{{ asset("uploads/{$file->filename}") }}'>{{$file->filename}}</a>
+                            <a href='{{ asset("uploads/{$file->filename}") }}' target="_blank">{{$file->filename}}</a>
                         </td>
                         <td>
                             <button type="button" id="btnDelete" class="btn btn-outline-danger btn-sm py-0 px-1" data-id="{{$file->upload_id}}"><span class="material-icons-outlined material-icons">delete</span></button>
