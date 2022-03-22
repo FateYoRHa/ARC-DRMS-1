@@ -36,8 +36,8 @@
 
                         @endif
                     </div>
-                    <table class="table table-sm table-borderless" id="table-show-record">
 
+                    <table class="table table-sm table-md table-borderless" id="table-show-record">
                         <tbody>
                             <tr>
                                 <td> <label for="idNumber" class="col-form-label-md primary-details-content">ID Number</label> </td>
@@ -66,12 +66,12 @@
         </div>
         <hr />
         <!-- Create other page for viewing the files -->
-        <div class="col-md-12">
+        <div class="col-12">
             <div class="row">
                 @foreach ($uploadQuery as $file)
                 @if($recordQuery->id_number == $file->student_id_record)
                 <div class="col-md-6">
-                    <iframe src="/ViewerJS/#../uploads/{{$file->filename}}" id="iframe" width='500' height='400' allowfullscreen webkitallowfullscreen></iframe>
+                    <iframe src="/ViewerJS/#../uploads/{{$file->filename}}" id="iframe" width='400' height='300' allowfullscreen webkitallowfullscreen></iframe>
                 </div>
                 @endif
                 @endforeach
@@ -80,6 +80,7 @@
     </div>
 </div>
 <!-- /#page-content-wrapper -->
+
 <script>
     var AuthUser = "{{{ (Auth::user()->is_admin) ? Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2 : 3 }}}";
     if (AuthUser == 3) {

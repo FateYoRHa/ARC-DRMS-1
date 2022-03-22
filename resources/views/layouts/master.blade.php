@@ -84,58 +84,62 @@
         </nav>
 
         <div class="d-flex" id="wrapper">
-            <aside>
-                <!-- Sidebar -->
-                <div class="bg-dark border-right" id="sidebar-wrapper">
-                    <div class="list-group list-group-flush">
-                        <a class="list-group-item list-group-item-action bg-dark" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }} <span class="material-icons-round material-icons-sidebar">logout</span>
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                    <div class="sidebar-heading"><img src="{{ asset('images/ubseal.png') }}" alt="ubseal"></div>
-                    <div class="list-group-flush list-group-item-action bg-dark" id="user-display"> <span class="badge bg-danger">{{ Auth::user()->username }}</span></div>
-                    @if(Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2)
-                    <a href="{{ route('change.password') }}" class="btn mb-2" id="user-display-password">Change Password</a>
-                    @endif
-                    <div class="list-group list-group-flush">
-                        @if (Auth::user()->is_admin == 1)
-                        <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
-                        <a href="{{ route('newrecords.index') }}" class="list-group-item list-group-item-action bg-dark">New Record <span class="material-icons-round material-icons-sidebar">post_add</span></a>
-                        <a href="{{ route('import.index') }}" class="list-group-item list-group-item-action bg-dark">Import <span class="material-icons-outlined material-icons-sidebar">upload_file</span></a>
-
-                        <hr id="sidebar-hr" />
+            <div class="d-flex align-items-stretch">
+                <aside>
+                    <!-- Sidebar -->
+                    <div class="bg-dark border-right" id="sidebar-wrapper">
                         <div class="list-group list-group-flush">
-                            <div class="dropdown">
-                                <a class="list-group-item list-group-item-action bg-dark " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Users <span class="material-icons-outlined material-icons-sidebar">
-                                        keyboard_arrow_down
-                                    </span>
-                                </a>
+                            <a class="list-group-item list-group-item-action bg-dark" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }} <span class="material-icons-round material-icons-sidebar">logout</span>
+                            </a>
 
-                                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="list-group-item list-group-item-action bg-dark" href="{{ route('register') }}">Register</a></li>
-                                    <li><a class="list-group-item list-group-item-action bg-dark" href="{{ route('users.index') }}"><span class="material-icons-outlined material-icons-sidebar">view_list</span> User List</a></li>
-                                </ul>
-                            </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
-                        @else
-                        <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
+                        <div class="sidebar-heading"><img src="{{ asset('images/ubseal.png') }}" alt="ubseal"></div>
+                        <div class="list-group-flush list-group-item-action bg-dark" id="user-display"> <span class="badge bg-danger">{{ Auth::user()->username }}</span></div>
+                        @if(Auth::user()->is_admin == 1 || Auth::user()->is_admin == 2)
+                        <a href="{{ route('change.password') }}" class="btn mb-2" id="user-display-password">Change Password</a>
                         @endif
+                        <div class="list-group list-group-flush">
+                            @if (Auth::user()->is_admin == 1)
+                            <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
+                            <a href="{{ route('newrecords.index') }}" class="list-group-item list-group-item-action bg-dark">New Record <span class="material-icons-round material-icons-sidebar">post_add</span></a>
+                            <a href="{{ route('import.index') }}" class="list-group-item list-group-item-action bg-dark">Import <span class="material-icons-outlined material-icons-sidebar">upload_file</span></a>
+
+                            <hr id="sidebar-hr" />
+                            <div class="list-group list-group-flush">
+                                <div class="dropdown">
+                                    <a class="list-group-item list-group-item-action bg-dark " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Users <span class="material-icons-outlined material-icons-sidebar">
+                                            keyboard_arrow_down
+                                        </span>
+                                    </a>
+
+                                    <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="list-group-item list-group-item-action bg-dark" href="{{ route('register') }}">Register</a></li>
+                                        <li><a class="list-group-item list-group-item-action bg-dark" href="{{ route('users.index') }}"><span class="material-icons-outlined material-icons-sidebar">view_list</span> User List</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @else
+                            <a href="{{ route('records.index') }}" class="list-group-item list-group-item-action bg-dark">Records <span class="material-icons-outlined material-icons-sidebar">article</span></a>
+                            @endif
+                        </div>
+                        <div class=""> </div>
                     </div>
+                    <!-- /#sidebar-wrapper -->
+                </aside>
+            </div>
 
 
-                </div>
-                <!-- /#sidebar-wrapper -->
-            </aside>
-
-            <main class="py-2">
-                @include('sweetalert::alert')
-                @yield('content')
-            </main>
+            <div class="flex-fill flex-0">
+                <main class="py-2">
+                    @include('sweetalert::alert')
+                    @yield('content')
+                </main>
+            </div>
         </div>
         <!-- /#wrapper -->
     </div>

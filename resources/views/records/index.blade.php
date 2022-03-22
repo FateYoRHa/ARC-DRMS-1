@@ -11,7 +11,7 @@
         </div>
         <hr />
         <div class="table-responsive">
-            <table class="datatable display compact" id="datatable-record">
+            <table class="table table-hover table-sm table-md datatable display compact" id="datatable-record">
                 <thead>
                     <tr>
                         <th>Record ID</th>

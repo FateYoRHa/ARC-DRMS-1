@@ -1,5 +1,6 @@
 body {
     overflow-x: hidden;
+    height: 100%;
 }
 
 /* custom nav */
@@ -32,6 +33,9 @@ body {
     font-size: 0.8em;
     padding: 0em 0.75rem !important;
 }
+aside {
+    height: 100%;
+}
 #sidebar-wrapper {
     min-height: 100vh;
     margin-left: -12rem;
@@ -40,6 +44,7 @@ body {
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
 }
+
 .sidebar-button button:hover{
     color: rgb(201, 201, 201);
 }
@@ -56,7 +61,7 @@ body {
     border-top: 3px solid rgba(0,0,0,.1);
 } 
 #page-content-wrapper {
-    min-width: 98vw;
+    min-width: 99vw;
 }
 #wrapper.toggled #sidebar-wrapper {
     margin-left: 0;
