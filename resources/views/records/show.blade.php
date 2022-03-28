@@ -41,21 +41,27 @@
                         <tbody>
                             <tr>
                                 <td> <label for="idNumber" class="col-form-label-md primary-details-content">ID Number</label> </td>
-                                <td> <label for="name" class="col-form-label-md primary-details-content">Name</label> </td>
+                                <td> <label for="name" class="col-form-label-md primary-details-content">Name</label> <small>(First Middle Last)</small> </td>
                             </tr>
                             <tr>
-                                <td> <p>{{$recordQuery->id_number}}</p> </td>
-                                <td> <p>{{$recordQuery->fName}} {{$recordQuery->mName}} {{$recordQuery->lName}}</p> </td>
+                                <td>
+                                    <p>{{$recordQuery->id_number}}</p>
+                                </td>
+                                <td>
+                                    <p>{{$recordQuery->fName}} {{$recordQuery->mName}} {{$recordQuery->lName}}</p>
+                                </td>
                             </tr>
-                            
+
                             <tr>
                                 <td> <label for="course" class="col-form-label-md primary-details-content">Course</label> </td>
                             </tr>
                             <tr>
-                                <td colspan="2"> <p>{{$recordQuery->course}}</p> </td>
+                                <td colspan="2">
+                                    <p>{{$recordQuery->course}}</p>
+                                </td>
                             </tr>
                         </tbody>
-                    </table> 
+                    </table>
                 </div>
 
             </div>
