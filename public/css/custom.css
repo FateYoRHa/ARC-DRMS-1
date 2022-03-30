@@ -161,7 +161,7 @@ body {
 
 /* custom show page */
 .profile-img img{
-    width: 90%;
+    width: 100%;
     display: block;
     border-radius: 8px;
     margin:auto;
@@ -170,13 +170,12 @@ body {
 .primary-details, .profile-img {
     margin-bottom: 1rem;
 }
-.profile-details {
-    padding: 10px;
-    box-shadow: 3px 2px #888888;
-}
 .profile-details{
-    background-color: rgb(255, 255, 236);
+    padding-top: 10px;
+    background-color: rgb(241, 241, 241);
     border-radius: 5px;
+    box-shadow: 3px 2px #888888;
+    margin-left: 0 !important
 }
 .primary-details-content {
     text-decoration: underline rgb(136, 136, 136);

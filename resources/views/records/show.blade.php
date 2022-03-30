@@ -23,7 +23,7 @@
         </div>
         @endif
 
-        <div class="primary-details row">
+        <div class="primary-details row col-12">
             <div class="col-md-2 profile-img">
                 <img src="{{ asset('images/blank-profile.png') }}" alt="" class="profile-img">
             </div>
@@ -72,11 +72,11 @@
         </div>
         <hr />
         <!-- Create other page for viewing the files -->
-        <div class="col-12">
+        <div class="d-flex justify-content-around col-12">
             <div class="row">
                 @foreach ($uploadQuery as $file)
                 @if($recordQuery->id_number == $file->student_id_record)
-                <div class="col-md-6">
+                <div class="col-sm-12 col-md-6 col-lg-6">
                     <iframe src="/ViewerJS/#../uploads/{{$file->filename}}" id="iframe" width='400' height='300' allowfullscreen webkitallowfullscreen></iframe>
                 </div>
                 @endif
