@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRecordsRequest extends FormRequest
 {
@@ -16,7 +17,7 @@ class UpdateRecordsRequest extends FormRequest
         return true;
     }
 
-        /**
+    /**
      * Indicates if the validator should stop on the first rule failure.
      *
      * @var bool
@@ -31,6 +32,10 @@ class UpdateRecordsRequest extends FormRequest
     public function rules()
     {
         return [
+            'id_number' => [
+                'required',
+                Rule::unique('records', 'id_number')->ignore($this->record, 'record_id')
+            ],
             'inputFname' => 'required',
             'inputMname' => 'required',
             'inputLname' => 'required',
