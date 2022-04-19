@@ -1,0 +1,2 @@
+sail artisan migrate
+docker exec -i arc-dbms_mysql_1 mysql -u root  arc_database < arc_database.sql
