@@ -35,6 +35,6 @@ class ImportFile implements ToModel, SkipsEmptyRows, WithHeadingRow, WithUpserts
      */
     public function uniqueBy()
     {
-        return 'id_numberw';
+        return 'id_number';
     }
 }

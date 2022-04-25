@@ -15,6 +15,7 @@
     <title>{{ config('app.name', 'ARC DBMS') }}</title>
 
     <!-- Scripts -->
+    <!-- Use asset for local dev-->
     <script src="{{ secure_asset('js/app.js') }}"></script>
     <script src="{{ secure_asset('js/custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.0/dist/sweetalert2.all.min.js"></script>

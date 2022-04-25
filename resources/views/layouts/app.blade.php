@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <!-- Use asset for local dev -->
     <script src="{{ secure_asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
