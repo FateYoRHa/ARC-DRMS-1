@@ -23,7 +23,7 @@
         <form action="{{ route('newrecords.store') }}" method="POST" class="row g-3" id="new-record-form" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="col-md-12">
-                <label for="inputIdNumer" class="form-label col-form-label-sm">ID Number <span class="material-icons-round material-icons-newrecord">badge</span></label>
+                <label for="inputIdNumer" class="form-label col-form-label-sm">ID Number</label>
                 <input type="text" class="form-control form-control-sm" id="id_number" name="id_number" value="{{ old('id_number') }}" required>
             </div>
             <div class="col-md-4">
@@ -39,7 +39,7 @@
                 <input type="text" class="form-control form-control-sm" id="inputLname" name="inputLname" value="{{ old('inputLname') }}" required>
             </div>
             <div class="col-md-4">
-                <label for="upload-file-new" class="upload-file-new">Import File<span class="material-icons-outlined material-icons-newrecord">upload</span></label>
+                <label for="upload-file-new" class="upload-file-new">Import File</label>
                 <input type="file" class="form-control-file" id="files" name="files[]" multiple>
             </div>
           

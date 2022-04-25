@@ -138,6 +138,9 @@ body {
     vertical-align: bottom;
     font-size: 22px;
 }
+.material-icons-toggle::before {
+    display: none;
+}
 .material-icons-sidebar{
     vertical-align: bottom;
     font-size: 20px;
