@@ -12,7 +12,7 @@
         </div>
         <hr />
         <div class="import-content">
-            <p>Import files with the extension names(.xlsx, ..........., )</p>
+            <p>Import files with the extension names(.xlsx, ..........., ) <a href="{{ asset('help-info/Help-Import.pdf') }}" target="_blank"><span class="material-icons-round material-icons help-import">help</span></a></p>
             <form action="{{ route('file-import') }}" method="POST" id="formImport" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group mb-4">
