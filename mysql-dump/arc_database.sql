@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2022 at 04:09 AM
+-- Generation Time: Apr 29, 2022 at 02:23 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -59,7 +59,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2019_08_19_000000_create_failed_jobs_table', 1),
 (10, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (20, '2022_02_14_091249_create_uploads_table', 6),
-(36, '2022_02_09_131901_create_records_table', 7);
+(37, '2022_02_09_131901_create_records_table', 7);
 
 -- --------------------------------------------------------
 
@@ -124,13 +124,6 @@ CREATE TABLE `uploads` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `uploads`
---
-
-INSERT INTO `uploads` (`upload_id`, `filename`, `filepath`, `student_id_record`, `for_record_id`, `created_at`, `updated_at`) VALUES
-(2, 'Amistad_Medical_Clearance.pdf', 'public/files/TCCEdubW42BAej4nCzfivuUQU5eY1zsnpu84dsEE.pdf', 20136624, 1, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -155,7 +148,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `idNumber`, `password`, `is_admin`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Administrator', '2000', '$2y$10$KYqkbrOZTOlcGPjUeg22qOrPbOAu6UskLU3omKWkypHxDsrKu9a1C', '1', NULL, '2022-03-02 01:28:21', '2022-03-02 01:28:21'),
 (2, 'Uploader', '2001', '$2y$10$NfIyHbgVaKC1i9xDW0CWQu0hw5yl/TjgyAk18m9zKfq1ElGUVeLmW', '2', NULL, '2022-03-02 01:41:24', '2022-03-02 01:41:24'),
-(3, 'Viewer', '2002', '$2y$10$6KiHYjSQsAUzZtD/eERZvudzGl9gBYE3.EEUeI1VEd5nW8JU2lKPW', NULL, NULL, '2022-03-02 03:51:25', '2022-03-02 07:23:12');
+(3, 'Viewer', '2002', '$2y$10$6KiHYjSQsAUzZtD/eERZvudzGl9gBYE3.EEUeI1VEd5nW8JU2lKPW', NULL, NULL, '2022-03-02 03:51:25', '2022-03-02 07:23:12'),
+(4, 'Master', '8888', '$2y$10$r2TCaxrNMWu0VIpG.52WJeMdtwYsLNht00fDU1YyvcE5bxmBsoIpO', '1', NULL, '2022-04-29 00:09:21', '2022-04-29 00:09:21');
 
 --
 -- Indexes for dumped tables
@@ -224,7 +218,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -242,13 +236,13 @@ ALTER TABLE `records`
 -- AUTO_INCREMENT for table `uploads`
 --
 ALTER TABLE `uploads`
-  MODIFY `upload_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `upload_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
