@@ -35,7 +35,7 @@ class UpdateRecordsRequest extends FormRequest
             'id_number' => [
                 'required',
                 Rule::unique('records', 'id_number')->ignore($this->record, 'record_id')
-            ],
+            ,'min:4','max:10'],
             'inputFname' => 'required',
             'inputMname' => 'required',
             'inputLname' => 'required',
@@ -49,6 +49,8 @@ class UpdateRecordsRequest extends FormRequest
         return [
             'id_number.required' => 'ID Number is required',
             'id_number.unique' => 'ID Number must be unique',
+            'id_number.min' => 'Id number must not be lesser than 4 digits',
+            'id_number.max' => 'Id number must not be greater than 10 digits',
             'inputFname.required' => 'First Name is required',
             'inputMname.required' => 'Middle Name is required',
             'inputLname.required' => 'Last Name is required',

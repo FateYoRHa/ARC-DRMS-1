@@ -33,7 +33,7 @@ class StoreNewRecordsRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_number' => 'required|unique:records|min:4|max:10|integer',
+            'id_number' => 'required|unique:records|min:4|max:10',
             'inputFname' => 'required',
             // 'inputMname' => 'required',
             // 'inputLname' => 'required',
@@ -44,8 +44,10 @@ class StoreNewRecordsRequest extends FormRequest
     public function messages()
     {
         return [
-            'id_number.required' => 'ID number is required',
-            'id_number.unique' => 'ID number is already taken',
+            'id_number.required' => 'Id number is required',
+            'id_number.unique' => 'Id number is already taken',
+            'id_number.min' => 'Id number must not be lesser than 4 digits',
+            'id_number.max' => 'Id number must not be greater than 10 digits',
             'inputFname.required' => 'First Name is required',
             // 'inputMname.required' => 'Middle Name is required',
             // 'inputLname.required' => 'Last Name is required',

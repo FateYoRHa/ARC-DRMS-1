@@ -28,7 +28,7 @@
             <input type="text" class="form-control form-control-sm" id="record_id InputEdit" name="record_id" value="{{$recordQuery->record_id}}" required hidden>
             <div class="col-md-12">
                 <label for="inputIdNumer" class="form-label col-form-label-sm">ID Number <span class="material-icons-round material-icons-newrecord">badge</span></label>
-                <input type="text" class="form-control form-control-sm" id="id_number InputEdit" name="id_number" value="{{$recordQuery->id_number}}" required readonly>
+                <input type="text" class="form-control form-control-sm" id="id_number InputEdit" name="id_number" value="{{$recordQuery->id_number}}" required>
             </div>
             <div class="col-md-4">
                 <label for="inputFname" class="form-label col-form-label-sm">First Name</label>

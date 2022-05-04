@@ -112,6 +112,9 @@ class ImportController extends Controller
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             alert()->error('Error', 'Something Went Wrong');
             return back();
+        } catch (\ErrorException $ex) {
+            alert()->error('Error', 'Wrong table format');
+            return back();
         }
 
         alert()->success('Success', 'Records Updated');

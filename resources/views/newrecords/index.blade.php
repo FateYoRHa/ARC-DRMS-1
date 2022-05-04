@@ -24,7 +24,7 @@
             {{ csrf_field() }}
             <div class="col-md-12">
                 <label for="inputIdNumer" class="form-label col-form-label-sm">ID Number</label>
-                <input type="text" class="form-control form-control-sm" id="id_number" name="id_number" value="{{ old('id_number') }}" required>
+                <input type="number" class="form-control form-control-sm" id="id_number" name="id_number" value="{{ old('id_number') }}" required>
             </div>
             <div class="col-md-4">
                 <label for="inputFname" class="form-label col-form-label-sm">First Name</label>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-4">
                 <label for="inputMname" class="form-label col-form-label-sm">Middle Name</label>
-                <input type="text" class="form-control form-control-sm" id="inputMname" name="inputMname" value="{{ old('inputMname') }}" required>
+                <input type="text" class="form-control form-control-sm" id="inputMname" name="inputMname" value="{{ old('inputMname') }}" >
             </div>
             <div class="col-md-4">
                 <label for="inputLname" class="form-label col-form-label-sm">Last Name</label>
