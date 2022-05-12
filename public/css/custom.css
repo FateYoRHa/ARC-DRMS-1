@@ -147,6 +147,7 @@ body {
 }
 .material-icons-toggle::before, .material-login::before {
     display: none;
+    font-display: none;
 }
 .material-icons-sidebar{
     vertical-align: bottom;
