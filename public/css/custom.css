@@ -16,6 +16,13 @@ body {
     border-radius: 12px;
     padding: 0% 0.785% !important;
 }
+.navbar-acronym {
+    color: rgba(255, 255, 255, 0.599);
+    font-size: larger;
+    font-style: oblique;
+    font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 #wrapper {
     min-height: 100vh;
 }
@@ -138,7 +145,7 @@ body {
     vertical-align: bottom;
     font-size: 22px;
 }
-.material-icons-toggle::before {
+.material-icons-toggle::before, .material-login::before {
     display: none;
 }
 .material-icons-sidebar{

@@ -14,9 +14,8 @@
                         @csrf
                         <!-- <label for="email" class="col-md-4 col-form-label login-details">{{ __('Id Number') }}</label> -->
                         <div class="row mb-3">
-                            <div class="col">
+                            <div class="col ">
                                 <input id="idNumber" type="text" class="form-control @error('idNumber') is-invalid @enderror login-details" name="idNumber" placeholder="ID number" value="{{ old('idNumber') }}" required autocomplete="idNumber" autofocus>
-
                                 @error('idNumber')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -27,8 +26,13 @@
 
                         <!-- <label for="password" class="col-md-4 col-form-label login-details">{{ __('Password') }}</label> -->
                         <div class="row mb-3">
-                            <div class="col">
+                            <div class="col input-group">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror login-details" name="password" placeholder="Password" required autocomplete="current-password">
+
+                                <button class="btn btn-outline-dark" type="button" id="login-btn" onclick="changeVisibility(this)"><span class="material-icons-outlined material-icons material-login">
+                                        visibility_off
+                                    </span>
+                                </button>
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -55,7 +59,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-<!-- 
+                                <!-- 
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}

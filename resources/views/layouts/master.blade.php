@@ -12,7 +12,7 @@
     <!-- Icons -->
     <!-- <link href="{{ asset('css/material-icons-min.css') }}" rel="stylesheet"> -->
 
-    <title>{{ config('app.name', 'ARC DBMS') }}</title>
+    <title>{{ config('app.name', 'ARC DRMS') }}</title>
 
     <!-- Scripts -->
     <!-- Use asset for local dev-->
@@ -35,10 +35,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('#') }}">
-                    {{ config('app.name', 'ARC DBMS') }}
+                <a class="navbar-brand" href="{{ url('/records') }}">
+                    {{ config('app.name', 'ARC DRMS') }}
                 </a>
-
+                <span class="navbar-acronym">Digital Records Management System</span> 
+                
                 <div class="navbar-nav" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
