@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -54,12 +55,12 @@ class UserController extends Controller
                 ->rawColumns(['action'])
                 ->editColumn('created_at', function ($row) {
                     //Format Date to Readable format
-                    $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $row->created_at)->format('d-m-Y h:i a');
+                    $formatedDate = DateTime::createFromFormat('Y-m-d H:i:s', $row->created_at)->format('d-m-Y h:i a');
                     return $formatedDate;
                 })
                 ->editColumn('updated_at', function ($row) {
                      //Format Date to Readable format
-                    $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $row->updated_at)->format('d-m-Y h:i a');
+                    $formatedDate = DateTime::createFromFormat('Y-m-d H:i:s', $row->updated_at)->format('d-m-Y h:i a');
                     return $formatedDate;
                 })
                 ->make(true);
