@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-4">
                 <label for="inputMname" class="form-label col-form-label-sm">Middle Name</label>
-                <input type="text" class="form-control form-control-sm" id="inputMname" name="inputMname" value="{{ old('inputMname') }}" >
+                <input type="text" class="form-control form-control-sm" id="inputMname" name="inputMname" value="{{ old('inputMname') }}">
             </div>
             <div class="col-md-4">
                 <label for="inputLname" class="form-label col-form-label-sm">Last Name</label>
@@ -41,8 +41,9 @@
             <div class="col-md-4">
                 <label for="upload-file-new" class="upload-file-new">Import File</label>
                 <input type="file" class="form-control-file" id="files" name="files[]" multiple>
+                <small class="text-muted">Select multiple files in one folder if uploading multiple files</small>
             </div>
-          
+
             <div class="col-12">
                 <button type="submit" class="btn btn-success new-record-submit" id="submit-new-record">Submit</button>
             </div>
