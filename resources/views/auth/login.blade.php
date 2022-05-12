@@ -6,7 +6,7 @@
         <div class="col-md-4">
             <div class="card login-card">
                 <div class="login-img">
-                    <img src="{{ asset('images/ubseal.png') }}" alt="">
+                    <img src="{{ secure_asset('images/ubseal.png') }}" alt="LOGO">
                 </div>
                 <h5 class="card-title text-center">UB ARC</h5>
                 <div class="card-body">
@@ -15,7 +15,7 @@
                         <!-- <label for="email" class="col-md-4 col-form-label login-details">{{ __('Id Number') }}</label> -->
                         <div class="row mb-3">
                             <div class="col ">
-                                <input id="idNumber" type="text" class="form-control @error('idNumber') is-invalid @enderror login-details" name="idNumber" placeholder="ID number" value="{{ old('idNumber') }}" required autocomplete="idNumber" autofocus>
+                                <input id="idNumber" type="text" title="id number" class="form-control @error('idNumber') is-invalid @enderror login-details" name="idNumber" placeholder="ID number" value="{{ old('idNumber') }}" required autocomplete="idNumber" autofocus>
                                 @error('idNumber')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -27,10 +27,10 @@
                         <!-- <label for="password" class="col-md-4 col-form-label login-details">{{ __('Password') }}</label> -->
                         <div class="row mb-3">
                             <div class="col input-group">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror login-details" name="password" placeholder="Password" required autocomplete="current-password">
+                                <input id="password" type="password" title="password" class="form-control @error('password') is-invalid @enderror login-details" name="password" placeholder="Password" required autocomplete="current-password">
 
-                                <button class="btn btn-outline-dark" type="button" id="login-btn" onclick="changeVisibility(this)"><span class="material-icons-outlined material-icons material-login">
-                                        visibility_off
+                                <button class="btn btn-outline-dark" type="button" id="login-btn" onclick="changeVisibility(this)" title="show password"><span class="material-icons-outlined material-icons material-login">
+                                        &#xe8f4
                                     </span>
                                 </button>
 
@@ -56,7 +56,7 @@
 
                         <div class="row mb-0">
                             <div class="col login-details">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" title="Login">
                                     {{ __('Login') }}
                                 </button>
                                 <!-- 

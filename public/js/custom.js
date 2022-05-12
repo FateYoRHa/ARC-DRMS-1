@@ -6,9 +6,9 @@ jQuery(document).ready(function ($) {
         var icon = $('.material-icons-toggle');
         icon.toggleClass('open');
         if (icon.hasClass('open')) {
-            icon.text('view_sidebar');
+            icon.text('\uf114');
         } else {
-            icon.text('more_vert');
+            icon.text('\ue5d4');
         }
     });
 })
@@ -30,9 +30,9 @@ jQuery(document).ready(function ($) {
         var icon = $('.material-login');
         icon.toggleClass('open');
         if (icon.hasClass('open')) {
-            icon.text('visibility');
+            icon.text('\ue8f5');
         } else {
-            icon.text('visibility_off');
+            icon.text('\ue8f4');
         }
     });
 })

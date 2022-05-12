@@ -48,7 +48,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <div class="sidebar-button">
-                            <button class="btn btn-light" id="menu-toggle"><span class="material-icons-round material-icons-toggle">more_vert</span></button>
+                            <button class="btn btn-light" id="menu-toggle"><span class="material-icons-round material-icons-toggle">&#xe5d4</span></button>
                         </div>
                         <!-- Authentication Links -->
                         <!-- @guest
