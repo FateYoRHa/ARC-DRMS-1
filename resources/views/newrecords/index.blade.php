@@ -38,11 +38,16 @@
                 <label for="inputLname" class="form-label col-form-label-sm">Last Name</label>
                 <input type="text" class="form-control form-control-sm" id="inputLname" name="inputLname" value="{{ old('inputLname') }}" required>
             </div>
+            <div class="col-md-12">
+                <label for="inputLname" class="form-label col-form-label-sm">Course</label>
+                <input type="text" class="form-control form-control-sm" id="inputCourse" name="inputCourse" value="{{ old('inputCourse') }}" required>
+            </div>
             <div class="col-md-4">
                 <label for="upload-file-new" class="upload-file-new">Import File</label>
                 <input type="file" class="form-control-file" id="files" name="files[]" multiple>
                 <small class="text-muted">Select multiple files in one folder if uploading multiple files</small>
             </div>
+            <pre id="selected"></pre>
 
             <div class="col-12">
                 <button type="submit" class="btn btn-success new-record-submit" id="submit-new-record">Submit</button>
@@ -53,4 +58,5 @@
 </div>
 <!-- /#page-content-wrapper -->
 
+@include('newrecords.index_script')
 @endsection

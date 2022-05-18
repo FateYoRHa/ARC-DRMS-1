@@ -42,10 +42,15 @@
                 <label for="inputFname" class="form-label col-form-label-sm">Last Name</label>
                 <input type="text" class="form-control form-control-sm" id="inputLname InputEdit" name="inputLname" value="{{$recordQuery->lName}}" required>
             </div>
+            <div class="col-md-12">
+                <label for="inputCourse" class="form-label col-form-label-sm">Course</label>
+                <input type="text" class="form-control form-control-sm" id="inputCourse InputEdit" name="inputCourse" value="{{$recordQuery->lName}}" required>
+            </div>
             <div class="col-md-4">
-                <label for="upload-file-new" class="upload-file-new">Import File<span class="material-icons-outlined material-icons-newrecord">upload</span></label>
+                <label for="upload-file-new" class="upload-file-new">Import File</label>
                 <input type="file" class="form-control-file" id="files" name="files[]" multiple>
             </div>
+            <pre id="selected-edit"></pre>
             <div class="col-12">
                 <button type="submit" class="btn btn-success new-record-submit" id="submit-new-record">Save</button>
             </div>
@@ -71,10 +76,15 @@
                 <label for="inputFname" class="form-label col-form-label-sm">Last Name</label>
                 <input type="text" class="form-control form-control-sm" id="inputLname InputEdit" name="inputLname" value="{{$recordQuery->lName}}" required readonly>
             </div>
+            <div class="col-md-12">
+                <label for="inputLname" class="form-label col-form-label-sm">Course</label>
+                <input type="text" class="form-control form-control-sm" id="inputCourse InputEdit" name="inputCourse" value="{{$recordQuery->lName}}" required readonly>
+            </div>
             <div class="col-md-4">
-                <label for="upload-file-new" class="upload-file-new">Import File<span class="material-icons-outlined material-icons-newrecord">upload</span></label>
+                <label for="upload-file-new" class="upload-file-new">Import File</label>
                 <input type="file" class="form-control-file" id="files" name="files[]" multiple>
             </div>
+            <pre id="selected-edit"></pre>
             <div class="col-12">
                 <button type="submit" class="btn btn-success new-record-submit" id="submit-new-record">Save</button>
             </div>

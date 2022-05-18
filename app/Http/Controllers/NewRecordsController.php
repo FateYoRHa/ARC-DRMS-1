@@ -53,6 +53,16 @@ class NewRecordsController extends Controller
     {
         $recordQuery = new NewRecords();
         try {
+            $recordQuery->id_number = $request->input('id_number');
+            $recordQuery->fName = $request->input('inputFname');
+            $recordQuery->mName = $request->input('inputMname');
+            $recordQuery->lName = $request->input('inputLname');
+            $recordQuery->course = $request->input('inputCourse');
+            //save first to create record ID to be referenced in Upload tbl
+            $recordQuery->save();
+        } catch (\Exception $e) {
+            alert()->error('Error', 'Something Went Wrong');
+        } finally {
             //Upload file and get record ID to be stored in db for reference
             if ($request->hasfile('files')) {
                 foreach ($request->file('files') as $key => $file) {
@@ -89,15 +99,6 @@ class NewRecordsController extends Controller
                     $data[] = $name;
                 }
             }
-        } catch (\Exception $e) {
-            alert()->error('Error', 'Something Went Wrong');
-        } finally {
-            $recordQuery->id_number = $request->input('id_number');
-            $recordQuery->fName = $request->input('inputFname');
-            $recordQuery->mName = $request->input('inputMname');
-            $recordQuery->lName = $request->input('inputLname');
-            //save first to create record ID to be referenced in Upload tbl
-            $recordQuery->save();
         }
 
         alert()->success('Success', 'Created successfully!');

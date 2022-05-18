@@ -173,6 +173,7 @@ class RecordsController extends Controller
             $recordQuery->fName = $request->input('inputFname');
             $recordQuery->mName = $request->input('inputMname');
             $recordQuery->lName = $request->input('inputLname');
+            $recordQuery->course = $request->input('inputCourse');
             $recordQuery->save();
         }
         alert()->success('Success', 'Record and File Updated Successfully!');
