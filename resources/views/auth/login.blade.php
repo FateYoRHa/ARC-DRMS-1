@@ -6,9 +6,9 @@
         <div class="col-md-4">
             <div class="card login-card">
                 <div class="login-img">
-                    <img src="{{ secure_asset('images/ubseal.png') }}" alt="LOGO">
+                    <img src="{{ asset('images/ubseal.png') }}" alt="LOGO">
                 </div>
-                <h5 class="card-title text-center">UB ARC</h5>
+                <h5 class="card-title text-center">UB DRMS <br> <h6 class="text-center">Digital Records Management System</h6></h5>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
