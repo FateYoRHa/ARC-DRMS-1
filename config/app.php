@@ -162,8 +162,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Yajra\DataTables\ButtonsServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        // Barryvdh\Snappy\ServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -235,7 +238,9 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        
+        // 'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        // 'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
     ],
 

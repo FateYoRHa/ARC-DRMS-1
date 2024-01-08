@@ -24,6 +24,7 @@ class User extends Authenticatable
         'username',
         'idNumber',
         'password',
+        'department',
         'is_admin',
     ];
 
@@ -47,6 +48,10 @@ class User extends Authenticatable
     ];
 
     public function records()
+    {
+        return $this->belongsTo('App\User');
+    }
+    public function students()
     {
         return $this->belongsTo('App\User');
     }

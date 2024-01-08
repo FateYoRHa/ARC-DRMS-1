@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="card login-card">
-                <div class="login-img">
-                    <img src="{{ asset('images/ubseal.png') }}" alt="LOGO">
+                <div class="login-img" style="padding-left: 0px;  padding-right: 0px;">
+                    <img src="{{ asset('images/ubseal.png') }}" alt="LOGO" class="img-fluid">
                 </div>
                 <h5 class="card-title text-center">UB DRMS <br> <h6 class="text-center">Digital Records Management System</h6></h5>
                 <div class="card-body">
@@ -29,10 +29,10 @@
                             <div class="col input-group">
                                 <input id="password" type="password" title="password" class="form-control @error('password') is-invalid @enderror login-details" name="password" placeholder="Password" required autocomplete="current-password">
 
-                                <button class="btn btn-outline-dark" type="button" id="login-btn" onclick="changeVisibility(this)" title="show password"><span class="material-icons-outlined material-icons material-login">
+                                {{-- <button class="btn btn-outline-dark" type="button" id="login-btn" onclick="changeVisibility(this)" title="show password"><span class="material-icons-outlined material-icons material-login">
                                         &#xe8f4
                                     </span>
-                                </button>
+                                </button> --}}
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
 
-                        <!-- <div class="row mb-3">
+                        <div class="row mb-3">
                             <div class="col">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -52,14 +52,14 @@
                                     </label>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
                         <div class="row mb-0">
                             <div class="col login-details">
                                 <button type="submit" class="btn btn-primary" title="Login">
                                     {{ __('Login') }}
                                 </button>
-                                <!-- 
+                                <!--
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}

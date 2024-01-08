@@ -22,6 +22,9 @@
     <!-- Styles -->
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ secure_asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/media-query.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css">
 </head>
 <body>
     <div id="app-login">

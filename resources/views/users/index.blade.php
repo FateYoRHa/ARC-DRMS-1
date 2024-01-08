@@ -8,13 +8,20 @@
             <h2>User List</h2>
         </div>
         <hr />
-
+        {{-- <h6>Sort By</h6>
+        <select data-column="7" class="form-control filter-select col-2">
+            <option value="" selected="selected">Department</option>
+            @foreach ($departments as $department)
+                <option value="{{ $department }}">{{ $department }}</option>
+            @endforeach
+        </select> --}}
         <table class="table table-striped display datatable nowrap" id="datatable-record">
             <thead>
                 <tr>
                     <th>Record ID</th>
                     <th>Name</th>
                     <th>Id Number</th>
+                    <th>Role</th>
                     <th>Password</th>
                     <th>Remember_token</th>
                     <th>Created</th>

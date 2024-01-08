@@ -50,7 +50,7 @@
                 {
                     data: 'course',
                     name: 'course',
-                    searchable: false,
+                    searchable: true,
                     sortable: true,
                     visible: true
                 },

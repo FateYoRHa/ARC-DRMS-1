@@ -9,7 +9,7 @@
             ajax: "{{ route('users.index') }}",
             columns: [{
                     data: 'user_id',
-                    name: 'record Id',
+                    name: 'user_id Id',
                     searchable: false,
                     sortable: false,
                     visible: false
@@ -24,6 +24,10 @@
                 {
                     data: 'idNumber',
                     name: 'idNumber'
+                },
+                {
+                    data: 'is_admin',
+                    name: 'is_admin'
                 },
                 {
                     data: 'password',
@@ -59,7 +63,7 @@
                 },
             ],
             scrollY: '55vh',
-            scrollX: true,
+            scrollX: false,
             columnDefs: [{
                     targets: 0,
                     visible: true,
@@ -72,6 +76,11 @@
             ],
 
 
+        });
+        $('.filter-select').change(function(){
+            table.column($(this).data('column'))
+            .search($(this).val())
+            .draw();
         });
 
     });

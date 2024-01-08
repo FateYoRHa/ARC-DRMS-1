@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Departments;
 
 class RegisterController extends Controller
 {
@@ -56,6 +57,7 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'idNumber' => ['required', 'integer', 'unique:users', 'min:4'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required'],
         ]);
     }
 
@@ -70,6 +72,8 @@ class RegisterController extends Controller
         return User::create([
             'username' => $data['username'],
             'idNumber' => $data['idNumber'],
+            'is_admin' => $data['is_admin'],
+            'department' => $data['department'],
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -83,5 +87,11 @@ class RegisterController extends Controller
             // ?: redirect($this->redirectPath());
             ?: redirect('users');
 
+    }
+    public function showRegistrationForm()
+    {
+        $departments = Departments::latest()->get();
+
+        return view('auth.register', compact('departments'));
     }
 }

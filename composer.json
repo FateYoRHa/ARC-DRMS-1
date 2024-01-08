@@ -6,8 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "barryvdh/laravel-dompdf": "^2.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "knplabs/knp-snappy": "^1.4",
         "laravel/framework": "9.0",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
@@ -15,12 +19,14 @@
         "laravelcollective/html": "^6.3",
         "maatwebsite/excel": "^3.1",
         "realrashid/sweet-alert": "^5.0",
+        "wemersonjanuario/wkhtmltopdf-windows": "0.12.2.3",
         "yajra/laravel-datatables": "1.5",
+        "yajra/laravel-datatables-buttons": "^4.13",
         "yajra/laravel-datatables-oracle": "^9.19"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.13",
+        "laravel/sail": "^1.17",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
